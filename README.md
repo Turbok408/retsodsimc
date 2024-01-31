@@ -1,4 +1,4 @@
-# Addedd
+# Added
 mana
 item procs
 int and spirit
