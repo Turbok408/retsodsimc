@@ -1,9 +1,11 @@
+# Addedd
+mana
+item procs
+int and spirit
+
 # Current Issues:
-cant go oom\
 no dots\
-no procs from items\
 flat crit rate for spells\
-no haste\
 assumes you have all buffs + enchants\
 assumes target has no armour\
 judge is on gcd and doesnt get rid off seal of command (this is probably barely even a dps difference)

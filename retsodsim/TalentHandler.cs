@@ -7,20 +7,21 @@ namespace retsodsim;
 
 public class TalentHandler
 {
+    private const double baseMana = 552;
     public static (Dictionary<string, double>,Dictionary<string, Ability>,Dictionary<string, Ability>) return_ability_stats(Dictionary<string, double> cStats, string talentsRunes)
     {
         var runes = talentsRunes.Split("_")[1];
         var talents = talentsRunes.Split("_")[0];
         var procs = new Dictionary<string, Ability>
         {
-            { "seal", new Ability(0,(stats)=>0,100,"holy","sor") } //add sor
+            { "seal", new Ability(0,(stats)=>0,100,"holy","sor",0) } //add sor
         };
         var abilities = new Dictionary<string, Ability>()
         {
-            { "judge", new Ability(8,(stats)=>0,100,"holy","jor") }, //add sor
+            { "judge", new Ability(8,(stats)=>0,100,"holy","jor",60) }, //add sor
             {
                 "heavy Dynamite",
-                new Ability(60,(stats)=> Ability.GetRandomDouble(128,178) ,100,"spell","Heavy Dynamite")
+                new Ability(60,(stats)=> Ability.GetRandomDouble(128,178) ,100,"spell","Heavy Dynamite",0)
             }
         };
         var dmgChanges = new Dictionary<string, (double, double)>
@@ -78,7 +79,7 @@ public class TalentHandler
                 }
                 case 5:
                 {
-                    abilities.Add("consec",new Ability(8,(stats)=>64+0.336*stats["sp"],5,"holy","Consecration"));
+                    abilities.Add("consec",new Ability(8,(stats)=>64+0.336*stats["sp"],5,"holy","Consecration",135));
                     break;
                 }
             }
@@ -108,8 +109,8 @@ public class TalentHandler
                     modifiers.Add(("crit",(stats)=>retTalents[6]));
                     break;
                 case 7:
-                    abilities["judge"] = new Ability(10,(stats)=>Ability.GetRandomDouble(60,64),3,"physical","Judgment of Command",dmgType:"holy");
-                    procs["seal"] = new Ability(0,(stats)=>0.7*stats["dmg"],19999,"physical","Seal of Command",procChance:100*(7*cStats["speed"])/60,dmgType:"holy");
+                    abilities["judge"] = new Ability(10,(stats)=>Ability.GetRandomDouble(60,64)+0.429*stats["sp"],3,"physical","Judgment of Command",65,dmgType:"holy");
+                    procs["seal"] = new Ability(0,(stats)=>0.7*stats["dmg"]+0.2*stats["sp"],19999,"physical","Seal of Command",0,procChance:100*(7*cStats["speed"])/60,dmgType:"holy");
                     break;
                 case 11:
                     dmgChanges["aa"] = (dmgChanges["aa"].Item1, dmgChanges["aa"].Item2 + 0.02 * retTalents[11]);
@@ -136,29 +137,28 @@ public class TalentHandler
         var legs = legsR.Match(runes).Value.Remove(0,2);
         if (chest == "p2")
         {
-            abilities.Add("ds", new Ability(10,(stats)=>1.1*stats["dmg"],0,"physical","Divine Storm"));
+            abilities.Add("ds", new Ability(10,(stats)=>1.1*stats["dmg"],0,"physical","Divine Storm",0.12*baseMana));
         }
         else if (chest == "p3")
         {
-            procs["seal"] = new Ability(0,(stats)=>0.35*stats["dmg"],1000,"physical","Seal of Blood",dmgType:"holy");
-            abilities["judge"] = new Ability(10,(stats)=>0.7*stats["dmg"],3,"physical","Judgement of Blood",dmgType:"holy");
+            procs["seal"] = new Ability(0,(stats)=>0.35*stats["dmg"],1000,"physical","Seal of Blood",0,dmgType:"holy");
+            abilities["judge"] = new Ability(10,(stats)=>0.7*stats["dmg"],3,"physical","Judgement of Blood",0.05*baseMana,dmgType:"holy");
         }
 
         if (hand == "x")
         {
-            abilities.Add("cs", new Ability(6,(stats)=>0.76*stats["dmg"],1,"physical","Crusader Strike"));
+            abilities.Add("cs", new Ability(6,(stats)=>0.76*stats["dmg"],1,"physical","Crusader Strike",-0.02*baseMana));
         }
 
         if (legs == "sn")
         {
-            abilities.Add("exo", new Ability(15,(stats)=> Ability.GetRandomDouble(90+stats["sp"]*0.429,102+stats["sp"]*0.429),2,"holy","Exocism"));
+            abilities.Add("exo", new Ability(15,(stats)=> Ability.GetRandomDouble(90+stats["sp"]*0.429,102+stats["sp"]*0.429),2,"holy","Exocism",85));
         }
         procs.Add("wf",
-            new Ability(0, (stats) => ((stats["mindmg"]+stats["maxdmg"])/2 / stats["speed"] + (1.2 * stats["ap"]) / 14) * stats["speed"],199999,"aa","Windfury",procChance:20,procNames:["seal"])); // think this should be deep copy
+            new Ability(0, (stats) => ((stats["dmg"]/stats["speed"]-stats["ap"]/ 14) + (1.2 * stats["ap"]) / 14 )* stats["speed"],199999,"aa","Windfury",0,procChance:20,procNames:["seal"])); // think this should be deep copy idk if this works with ap procs
         abilities.Add("melee",
-            new Ability(cStats["speed"], (stats) => stats["dmg"], 100, "aa", "Melee", procNames: ["wf","seal"]));
+            new Ability(cStats["speed"], (stats) => stats["dmg"], -100, "aa", "Melee",0, procNames: ["wf","seal"]));
         // doesnt change with haste
-        Ability.Procs = procs;
         var tempDict = cStats.DeepClone();
         foreach (var VARIABLE in tempDict)
         {
@@ -179,7 +179,7 @@ public class TalentHandler
             entry.Value.Flatmod = dmgChanges[entry.Value.DmgType].Item1;
             entry.Value.PercentMod = dmgChanges[entry.Value.DmgType].Item2;
         }
-        foreach (KeyValuePair<string,Ability> entry in Ability.Procs)
+        foreach (KeyValuePair<string,Ability> entry in procs)
         {   
             entry.Value.Flatmod = dmgChanges[entry.Value.DmgType].Item1;
             entry.Value.PercentMod = dmgChanges[entry.Value.DmgType].Item2;

@@ -8,8 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="CloneExtensions" Version="1.4.2" />
       <PackageReference Include="DeepCloner" Version="0.10.4" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="System.Collections" Version="4.3.0" />
+      <PackageReference Include="System.Reflection" Version="4.3.0" />
         <Reference Include="System.Web.Extensions">
             <HintPath>C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.5\System.Web.Extensions.dll</HintPath>
         </Reference>

@@ -1,18 +1,37 @@
-﻿namespace retsodsim;
+﻿using System.Reflection.PortableExecutable;
+using Force.DeepCloner;
+
+namespace retsodsim;
 
 public class Instance
 {
- 
+    public  Dictionary<string,Ability>? Procs { get; set; }
     private double _time;
-    private Dictionary<string, double> _stats;
+    private Dictionary<string, double> _normalStats;
+    private Dictionary<string, double> _proccedStats;
     private Dictionary<string, Ability> _abilities;
-    
-    public Instance(Dictionary<string, Ability> abilities, Dictionary<string, double> stats, double time)
+    public double _mana;
+    private const double _baseRegen = 0.017936;
+    private double _fiveSecondTimer;
+    private Dictionary<string, OnHitUseStat> _onHitUseStats;
+    private List<string> _activeProcs =[];
+    private bool _onGcd = false;
+    public Instance(Dictionary<string, Ability> abilities, Dictionary<string, double> stats, double time, Dictionary<string, OnHitUseStat> onHitUseStats,Dictionary<string,Ability>? procs)
     {
         _abilities = abilities;
-        _stats = stats;
+        _normalStats = stats;
         _time = time;
-
+        _mana = stats["mana"];
+        _onHitUseStats = onHitUseStats;
+        _proccedStats = stats;
+        Procs = procs;
+        var wfProcs = procs.DeepClone();
+        wfProcs.Remove("wf");
+        procs["wf"].Procs = wfProcs;
+        foreach (var entry in procs)
+        {
+            _abilities["melee"].Procs = procs;
+        }
     }
     public Dictionary<string,List<double>> Output()
     { 
@@ -21,11 +40,14 @@ public class Instance
         {
             dmg.Add(entry.Value.Name,[(long)entry.Value._attacks,(long)entry.Value.AbilityDmgTotal]);
         }
+        foreach (var entry in Procs)
+        {
+            dmg.Add(entry.Value.Name,[(long)entry.Value._attacks,(long)entry.Value.AbilityDmgTotal]);
+        }
         return dmg;
     }
     public void RunInstance()
     {
-        //int threadIndex = (int)threadContext;
         while (_time > 0)
         {
             Iterate();
@@ -34,14 +56,36 @@ public class Instance
         {
             entry.Value.Reset();
         }
-        _time = 120;
-        //Console.WriteLine($"Thread {threadIndex} result calculated...");
+        _time = 120; 
     }
-    private void Iterate()
+    private void Iterate() // clean this up a little
             {
                 double prio = 100000000;
                 string? toPress = null;
                 bool buttonPressed = false;
+                foreach (var entry in _onHitUseStats)
+                {
+                    if(entry.Value.CdLeft<=0 & !_activeProcs.Contains(entry.Key))
+                    {
+                        _proccedStats = entry.Value.DoEffect(_proccedStats); // this only works for flat additions of stats
+                        _activeProcs.Add(entry.Key);
+                        if (entry.Value.Stat == "haste")
+                        {
+                            _abilities["melee"].Cd = _proccedStats["speed"] / (_proccedStats["haste"]*0.01);
+                            _abilities["melee"]._currentCd = (_abilities["melee"]._currentCd / _abilities["melee"].Cd) *(_proccedStats["speed"] / _proccedStats["haste"]);
+                        } 
+                    }else if (!entry.Value.IsActive() & _activeProcs.Contains(entry.Key))
+                    {
+                        _proccedStats = entry.Value.UndoEffect(_proccedStats); // this only works for flat additions of stats
+                        _activeProcs.Remove(entry.Key);
+                        if (entry.Value.Stat == "haste")
+                        {
+                            _abilities["melee"].Cd = _proccedStats["speed"] / (_proccedStats["haste"]*0.01);
+                            _abilities["melee"]._currentCd = (_abilities["melee"]._currentCd / _abilities["melee"].Cd) *(_proccedStats["speed"] / _proccedStats["haste"]);
+                        } 
+                    }
+                    entry.Value.ReduceCd(0.01);
+                }
                 foreach (var entry in _abilities)
                 {
                     if (entry.Value._currentCd <= 0)
@@ -54,36 +98,57 @@ public class Instance
                         }
                     }
                 }
+
                 if (buttonPressed)
                 {
-                    _abilities[toPress].do_dmg(_stats);
-                    if (_abilities[toPress].Name != "Melee")
+                    if (_mana >= _abilities[toPress].ManaCost && !_onGcd)
                     {
-                        _time -= 1.5;
-                        foreach (var entry in _abilities)
                         {
-                            entry.Value.ReduceCd(1.5);
-                            if (entry.Value.Name == "Melee" && entry.Value._currentCd <= 0)
+                            _abilities[toPress].do_dmg(_proccedStats);
+                            _mana -= _abilities[toPress].ManaCost;
+                            if (_abilities[toPress].Name != "Melee")
                             {
-                                if (_time >= 0)
+                                
+                                _fiveSecondTimer = 0;
+                                _onGcd = true;
+                                foreach (var entry in _abilities)
                                 {
-                                    var cdOffset = entry.Value._currentCd;
-                                    entry.Value.do_dmg(_stats);
-                                    entry.Value._currentCd = entry.Value.Cd + cdOffset;
+                                    if (entry.Value.Name == "Melee" &&
+                                        entry.Value._currentCd <= 0) // this is very cursed
+                                    {
+                                        if (_time >= 0)
+                                        {
+                                            var cdOffset = entry.Value._currentCd;
+                                            entry.Value.do_dmg(_proccedStats);
+                                            entry.Value._currentCd = entry.Value.Cd + cdOffset;
+                                        }
+                                    }
                                 }
+
+
                             }
                         }
-                        
-                        
                     }
-                }
-                else
-                {
-                    _time -= 0.01;
-                    foreach (var entry in _abilities)
+                    else if (_abilities[toPress].Name == "Melee")
                     {
-                        entry.Value.ReduceCd(0.01);
+                        _abilities[toPress].do_dmg(_proccedStats);
+                        _mana -= _abilities[toPress].ManaCost;
+                        
                     }
                 }
+                _fiveSecondTimer += 0.01;
+                foreach (var entry in _abilities)
+                {
+                    entry.Value.ReduceCd(0.01);
+                }
+                if (_fiveSecondTimer > 5)
+                {
+                    _mana += (5 * (0.001 + Math.Sqrt(_proccedStats["int"]) * _proccedStats["spirit"] * _baseRegen) * 0.6)*0.01; //not sure this is right also conituosuly updates mana not ever 5 sec 
+                }
+                if (_fiveSecondTimer >= 1.5)
+                {
+                    _onGcd = false;
+                }
+                _time -= 0.01;
             }
 }
