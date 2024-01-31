@@ -4,8 +4,6 @@ item procs
 int and spirit
 
 # Current Issues:
-no dots\
-flat crit rate for spells\
 assumes you have all buffs + enchants\
 assumes target has no armour\
 judge is on gcd and doesnt get rid off seal of command (this is probably barely even a dps difference)
