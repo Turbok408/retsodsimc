@@ -16,12 +16,13 @@
         private double _procChance;
         private Func<Dictionary<string, double>, double> _dmgFunc;
         private static readonly Random GetRandom = new Random();
-        public List<string>? _procNames {get; set; }
+        private List<string>? _procNames {get; set; }
         public string DmgType;
         public double ManaCost;
+        public bool CanCrit;
         
         public Ability(double cd, Func<Dictionary<string, double>, double> dmgFunc, int prio, string school,
-            string name,double manaCost, double procChance = 100, List<string>? procNames = null, string dmgType = "")
+            string name,double manaCost, double procChance = 100, List<string>? procNames = null, string dmgType = "",bool cancrit = true)
         {
             Cd = cd;
             _dmgFunc = dmgFunc;
@@ -31,6 +32,7 @@
             _procChance = procChance;
             _procNames = procNames;
             ManaCost = manaCost;
+            CanCrit = cancrit;
             if (dmgType == "")
             {
                 DmgType = school;
@@ -62,7 +64,9 @@
         private double DoCrit(Dictionary<string, double> stats)
         {
 
-            double hit = stats["hit"];
+            if (CanCrit)
+            {
+                double hit = stats["hit"];
             double crit = stats["crit"];
             float glanceChance = 10 + 2 * 3;
             float ratingDif = 140 - 130;
@@ -74,7 +78,6 @@
             switch (School) 
             {
                 case "aa":
-
                     attackTable = new Dictionary<(double, double), double>()
                     {
                         { (0, 5 - hit), 0 },
@@ -94,14 +97,30 @@
                     };
                     break;
                     
-                case "spell":
-                case "holy":   
+                case "spell": //doesnt work properly but only spell is dynamite
                     attackTable = new Dictionary<(double, double), double>()
                     {
                         { (0, 4), 0 },
-                        { (4, 5 - hit + 6.5 + 9), 2 },
+                        { (4, 5 - stats["sp_crit"] + 6.5 + 9), 2 },
                         { (4 + stats["sp_crit"], 100), 1 }
                     };
+                    break;
+                case "holy":
+                    if (GetRandomDouble(0, 100) >= 17 - stats["hp_hit"])
+                    {
+                        attackTable = new Dictionary<(double, double), double>()
+                        {
+                            { (0, stats["hp_crit"]), 2 },
+                            { (stats["hp_crit"], 100), 1 }
+                        };
+                    }
+                    else
+                    {
+                        attackTable = new Dictionary<(double, double), double>()
+                        {
+                            { (0, 100), 0 },
+                        };
+                    }
                     break;
             }
             foreach (KeyValuePair<(double, double), double> entry in attackTable)
@@ -112,6 +131,11 @@
                 }
             }
             return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
         public void Reset()

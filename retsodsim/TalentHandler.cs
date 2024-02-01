@@ -8,17 +8,33 @@ namespace retsodsim;
 public class TalentHandler
 {
     private const double baseMana = 552;
+
+    private static string TryReduceString(string theString)
+    {
+        string theStringToreturn = "null";
+        try
+        {
+            theStringToreturn = theString.Remove(0, 2);
+        }
+        catch{}
+
+        return theStringToreturn;
+    }
     public static (Dictionary<string, double>,Dictionary<string, Ability>,Dictionary<string, Ability>) return_ability_stats(Dictionary<string, double> cStats, string talentsRunes)
     {
-        var runes = talentsRunes.Split("_")[1];
-        var talents = talentsRunes.Split("_")[0];
+        string? runes = null;
+        try
+        {
+            runes = talentsRunes.Split("_")[1];
+        }catch{}
+        string talents = talentsRunes.Split("_")[0];
         var procs = new Dictionary<string, Ability>
         {
-            { "seal", new Ability(0,(stats)=>0,100,"holy","sor",0) } //add sor
+            { "seal", new Ability(0,(stats)=>23.74*stats["speed"]+0.125*stats["sp"],100,"holy","Seal of Righteousness",0) } //only correct for 2 handers
         };
         var abilities = new Dictionary<string, Ability>()
         {
-            { "judge", new Ability(8,(stats)=>0,100,"holy","jor",60) }, //add sor
+            { "judge", new Ability(8,(stats)=>0.5*stats["sp"]+Ability.GetRandomDouble(53,58),100,"holy","Judgement of Righteousness",60) }, //add sor
             {
                 "heavy Dynamite",
                 new Ability(60,(stats)=> Ability.GetRandomDouble(128,178) ,100,"spell","Heavy Dynamite",0)
@@ -31,12 +47,13 @@ public class TalentHandler
             { "spell", (0, 1) },
             { "holy", (0, 1) }
         };
+        /*
         Console.WriteLine("Sim Ghamoo-ra? (y/n)");
         if (Console.ReadLine() == "y")
         {
             dmgChanges["spell"] = (0,2);
             dmgChanges["holy"] = (0,2);
-        }
+        }*/
         var cdChanges = new Dictionary<string, double>();
         var modifiers = new List<(string, Func<Dictionary<string,double>,double>)>();
         int[] holyTalents = [0], protTalents = [0], retTalents = [0];
@@ -79,8 +96,18 @@ public class TalentHandler
                 }
                 case 5:
                 {
-                    abilities.Add("consec",new Ability(8,(stats)=>64+0.336*stats["sp"],5,"holy","Consecration",135));
+                    abilities.Add("consec",new Ability(8,(stats)=>64+0.336*stats["sp"],5,"holy","Consecration",135,cancrit : false));
                     break;
+                }
+                case 12:
+                {
+                    modifiers.Add(("sp_crit",(stats) => holyTalents[12]));
+                    break;
+                }
+                case 13:
+                {
+                    abilities.Add("holyShock",new Ability(30,(stats)=>0.43*stats["sp"]+Ability.GetRandomDouble(204,220),-2,"holy","Holy Shock",225));
+                    break; 
                 }
             }
         }
@@ -98,7 +125,9 @@ public class TalentHandler
                 case 0:
                     modifiers.Add(("ap",(stats) => 55*(0.04*retTalents[0])));
                     break;
-                
+                case 1 :
+                    //add benidcation
+                    break;
                 case 2:
                     cdChanges.Add("judge", -1 * retTalents[2]);
                     break;
@@ -129,12 +158,31 @@ public class TalentHandler
             }
             
         }
-        Regex chestR = new Regex(@"156.{2}");
-        Regex handR = new Regex(@"6n.");
+        // should prob make this a list or smth will do next week fr fr ong
+        Regex chestR = new Regex(@"56.{2}");
+        Regex handR = new Regex(@"6n.{1}");
         Regex legsR = new Regex(@"76.{2}");
-        var chest = chestR.Match(runes).Value.Remove(0,3);
-        var hand = handR.Match(runes).Value.Remove(0,2);
-        var legs = legsR.Match(runes).Value.Remove(0,2);
+        Regex headR = new Regex(@"16.{2}");
+        Regex wristR = new Regex(@"96.{2}");
+        Regex waistR = new Regex(@"66.{2}");
+        Regex feetR = new Regex(@"86.{2}");
+        string? chest = "null";
+        string? hand = "null";
+        string? legs = "null";
+        string? head = "null";
+        string? wrist = "null";
+        string? waist = "null";
+        string? feet  = "null";
+        if (runes != null)
+        {
+            chest = TryReduceString(chestR.Match(runes).ToString());
+            hand = TryReduceString(handR.Match(runes).ToString());
+            legs = TryReduceString(legsR.Match(runes).ToString());
+            head = TryReduceString(headR.Match(runes).ToString());
+            wrist = TryReduceString(wristR.Match(runes).ToString());
+            waist = TryReduceString(waistR.Match(runes).ToString());
+            feet = TryReduceString(feetR.Match(runes).ToString());
+        }
         if (chest == "p2")
         {
             abilities.Add("ds", new Ability(10,(stats)=>1.1*stats["dmg"],0,"physical","Divine Storm",0.12*baseMana));
@@ -144,15 +192,45 @@ public class TalentHandler
             procs["seal"] = new Ability(0,(stats)=>0.35*stats["dmg"],1000,"physical","Seal of Blood",0,dmgType:"holy");
             abilities["judge"] = new Ability(10,(stats)=>0.7*stats["dmg"],3,"physical","Judgement of Blood",0.05*baseMana,dmgType:"holy");
         }
-
         if (hand == "x")
         {
             abilities.Add("cs", new Ability(6,(stats)=>0.76*stats["dmg"],1,"physical","Crusader Strike",-0.02*baseMana));
         }
-
         if (legs == "sn")
         {
             abilities.Add("exo", new Ability(15,(stats)=> Ability.GetRandomDouble(90+stats["sp"]*0.429,102+stats["sp"]*0.429),2,"holy","Exocism",85));
+        }
+        if (head == "xg")
+        {
+            // +18 holy crit
+        }else if(head =="xh")
+        {
+            // consec can crit
+        }
+        if (wrist == "xj")
+        {
+            // exo holy wrath cd -50% add holy wrath 
+        }else if (wrist == "xk")
+        {
+            // hammer of wrath 0 cd for 10% of time
+        }
+        if (waist == "w9")
+        {
+            //+17 spell hit
+        }else if (waist == "wa")
+        {
+            // sp +=30%ap
+        }
+        else if (waist == "wb")
+        {
+            // holy shock +20% dmg crits with holy shock -100% cd on shock exo refund holy shock mana
+        }
+        if (feet == "sk")
+        {
+            //+5% max mana per 3sec
+        }else if (feet == "sp")
+        {
+            // aa crits => shock + exo -100% cd
         }
         procs.Add("wf",
             new Ability(0, (stats) => ((stats["dmg"]/stats["speed"]-stats["ap"]/ 14) + (1.2 * stats["ap"]) / 14 )* stats["speed"],199999,"aa","Windfury",0,procChance:20,procNames:["seal"])); // think this should be deep copy idk if this works with ap procs

@@ -9,7 +9,7 @@ namespace retsodsim
         {
             var onUse = new Dictionary<string, OnHitUseStat>();
             var dmgProcs = new Dictionary<string, Ability>();
-            Dictionary<string, double> stats = new Dictionary<string, double>
+            Dictionary<string, double> stats =new Dictionary<string, double>
             {
                 { "agi", 34 + 8 + 4 + 3 },
                 { "sta", 0 },
@@ -21,16 +21,25 @@ namespace retsodsim
                 { "crit", 2 },
                 { "hit", 0 },
                 { "sp", 25 },
-                { "sp_crit", 4.12 + 3}, // no idea where 4.12 base crit comes from
+                { "sp_hit", 3 },
+                { "sp_crit", 4.12 + 2}, // no idea where 4.12 base crit comes from
                 { "int", 36 + 5 +7 }, // this is just base int +int buff + int pot no int stat in database
                 {"mana",552 + 320}, // this assume one lesser mana potion
                 {"spirit",38}, // just base spirit no spirit stat in databse
-                {"haste",100}
-            }; // bases stats + all buffs should add global dmg modifer for world buffs 
+                {"haste",100},
+                {"hp_hit",100},
+                {"hp_crit",100}
+            };
+            if (statModifiers != null)
+            {
+                foreach (var entry in statModifiers)
+                {
+                    stats[entry.Key] += entry.Value;
+                }
+            }
             string jsonFilePath = Directory.GetCurrentDirectory()+"\\items.json";
             string json = File.ReadAllText(jsonFilePath);
             var  allIds = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string,dynamic>>>(json);
-            int id = 1282;
             string itemsIdsTxt = File.ReadAllText(Directory.GetCurrentDirectory() + "\\saves.json");
             var itemsIdsDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(itemsIdsTxt);
             List<string> testSet = itemsIdsDict["save1"];
@@ -74,7 +83,7 @@ namespace retsodsim
                         }
                         dmgProcs.Add(allIds[entry]["name"],
                             new Ability(0, new Func<Dictionary<string, double>, double>((stats) => dmg), 1000, school,
-                                allIds[entry]["name"], 0,procChance = procChance));
+                                allIds[entry]["name"], 0,procChance : procChance));
                     }
                 }
                 foreach (var statType in (stats.Keys))
@@ -108,7 +117,6 @@ namespace retsodsim
             {
                 foreach (var entry in statModifiers)
                 {
-                    Console.WriteLine(entry.Key);
                     stats[entry.Key] += entry.Value;
                 }
             }
@@ -126,16 +134,16 @@ namespace retsodsim
             var dps = ((stats["mindmg"] + stats["maxdmg"]) / 2)/stats["speed"];
             var j = (((stats["mindmg"] + stats["maxdmg"]) / 2) / stats["speed"] + stats["ap"] / 14) * stats["speed"];
             stats.Add("dmg",(dps+stats["ap"]/14)*stats["speed"]);
-            stats["crit"] += stats["agi"] / 20 * 0.01;
+            stats["crit"] += stats["agi"] / 20 ;
             stats["mana"] += stats["int"] * 15;
-            stats["spell_crit"] += stats["int"] / 54;
+            stats["sp_crit"] += stats["int"] / 54;
+            stats["hp_hit"] += stats["sp_hit"];
+            stats["hp_crit"] += stats["sp_crit"];
             return (stats, abilitys,onUse,dmgProcs);
         }
-
         private static Dictionary<string,List<double>> RunSim(int iterations, double time,Dictionary<string,double> stats,Dictionary<string,Ability> abilities,Dictionary<string,OnHitUseStat> onHitUseStat,Dictionary<string,Ability> procs)
         {
             var instArray = new Instance[iterations];
-                ManualResetEvent signal = new ManualResetEvent(false);
                 var tasks = new List<Task>();
                 for (int i = 0; i < iterations; i++) 
                 {
@@ -170,6 +178,54 @@ namespace retsodsim
             }
             Console.WriteLine(dmgTotal + " dps");
         }
+
+        private static void StatWeights(int iterations, double time,string talents) //could optimize this a lot but cba
+        {
+            var statsThatDoDmg = new Dictionary<string, double>
+            {
+                {"spirit",0},
+                { "agi", 0},
+                { "stg", 0},
+                { "ap", 0},
+                { "crit", 0},
+                { "hit", 0 },
+                { "sp", 0 },
+                { "sp_crit",0},
+                { "int", 0}, 
+                {"haste",0},
+            };
+            
+            foreach (var entry in statsThatDoDmg)
+            {
+                var statAbilites = GetStats(talents,statModifiers : new Dictionary<string,double> {{entry.Key,50}});
+                var dmg = RunSim(iterations, time, statAbilites.Item1, statAbilites.Item2, statAbilites.Item3,
+                    statAbilites.Item4);
+                double dmgTotal = 0;
+                foreach (var varible in dmg) 
+                {
+                    dmgTotal += 1.15 * varible.Value[1] / (time * iterations);
+                }
+                statsThatDoDmg[entry.Key] = dmgTotal;
+            }
+            var basestatAbilites = GetStats(talents);
+            var baseDmg = RunSim(iterations, time, basestatAbilites.Item1, basestatAbilites.Item2, basestatAbilites.Item3,
+                basestatAbilites.Item4);
+            var baseDmgTotal = 0.0;
+            foreach (var varible in baseDmg) 
+            {
+                baseDmgTotal += 1.15 * varible.Value[1] / (time * iterations);
+            }
+            foreach (var entry in statsThatDoDmg)
+            {
+                statsThatDoDmg[entry.Key] = (entry.Value-baseDmgTotal)/50; //compare to base dmg
+            }
+            Console.WriteLine("+1 or 1% for crit/haste/hit statweights (this has a large error):");
+            foreach (var entry in statsThatDoDmg)
+            {
+                Console.WriteLine(entry.Key+":"+(entry.Value)/statsThatDoDmg["ap"]);
+                 // hugeeeeeeeeee variance on this
+            }
+        }
         
         static void Main(string[] args)
             {
@@ -180,20 +236,22 @@ namespace retsodsim
                 Console.WriteLine("Input Talents: ");
                 string talents = Console.ReadLine();
                 var statAbilites = GetStats(talents);
-                var results = RunSim(iterations, time, statAbilites.Item1, statAbilites.Item2, statAbilites.Item3,statAbilites.Item4);
-                OutputDetailed(results,time,iterations);
+                Console.WriteLine("press 1 for sim, 2 for stat weights (this will do iterations*11 iterations)");
+                if (Console.ReadLine() == "1")
+                {
+                    var results = RunSim(iterations, time, statAbilites.Item1, statAbilites.Item2, statAbilites.Item3,statAbilites.Item4);
+                    OutputDetailed(results,time,iterations);
+                }
+                else
+                {
+                    StatWeights(iterations,time,talents);
+                }
                 Console.ReadLine();
             }
         }
     }
 
 
-/* add auras (done except ap procs on wf?)
- options for buffs(why sim without buffs?)
- --50230051_156p276sna6nx
- seal of blood mana back
- idiot proof inputs
- no sp items in db?
- */
+
 
 

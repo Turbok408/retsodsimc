@@ -1,7 +1,9 @@
 # Added
-mana
-item procs
-int and spirit
+mana\
+item procs\
+int and spirit\
+statweights sim\
+fixed random bugs\
 
 # Current Issues:
 assumes you have all buffs + enchants\

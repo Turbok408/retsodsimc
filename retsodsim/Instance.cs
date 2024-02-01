@@ -1,16 +1,15 @@
-﻿using System.Reflection.PortableExecutable;
-using Force.DeepCloner;
+﻿using Force.DeepCloner;
 
 namespace retsodsim;
 
 public class Instance
 {
-    public  Dictionary<string,Ability>? Procs { get; set; }
+    private  Dictionary<string,Ability>? Procs { get; set; }
     private double _time;
     private Dictionary<string, double> _normalStats;
     private Dictionary<string, double> _proccedStats;
     private Dictionary<string, Ability> _abilities;
-    public double _mana;
+    private double _mana;
     private const double _baseRegen = 0.017936;
     private double _fiveSecondTimer;
     private Dictionary<string, OnHitUseStat> _onHitUseStats;
