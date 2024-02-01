@@ -4,6 +4,7 @@ item procs\
 int and spirit\
 statweights sim\
 fixed random bugs\
+adderd sor
 
 # Current Issues:
 assumes you have all buffs + enchants\
