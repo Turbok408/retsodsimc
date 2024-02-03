@@ -34,7 +34,7 @@ public class TalentHandler
         };
         var abilities = new Dictionary<string, Ability>()
         {
-            { "judge", new Ability(8,(stats)=>0.5*stats["sp"]+Ability.GetRandomDouble(53,58),100,"holy","Judgement of Righteousness",60) }, //add sor
+            { "judge", new Ability(8,(stats)=>0.5*stats["sp"]+Ability.GetRandomDouble(53,58),100,"holy","Judgement of Righteousness",60+0.06*baseMana) }, //add sor
             {
                 "heavy Dynamite",
                 new Ability(60,(stats)=> Ability.GetRandomDouble(128,178) ,100,"spell","Heavy Dynamite",0)
@@ -91,8 +91,9 @@ public class TalentHandler
                     break;
                 case 3:
                 {
+                    abilities["seal"].PercentMod += 0.03 * holyTalents[3]; // no need to check for name as cant be any other seal currently
+                    abilities["judget"].PercentMod += 0.03 * holyTalents[3];
                     break;
-                     // add in rightusenoss % dmg increase
                 }
                 case 5:
                 {
@@ -118,6 +119,8 @@ public class TalentHandler
                 modifiers.Add(("hit",(stats) => protTalents[2]));
             }
         }
+
+        double judgeManaReduction = 1; // this is stupid
         for (int i = 0; i < retTalents.Length; i++)
         {
             switch(i)
@@ -126,7 +129,8 @@ public class TalentHandler
                     modifiers.Add(("ap",(stats) => 55*(0.04*retTalents[0])));
                     break;
                 case 1 :
-                    //add benidcation
+                    judgeManaReduction -= 0.03 * retTalents[1];
+                    abilities["judge"].ManaCost -=0.03 * retTalents[1];
                     break;
                 case 2:
                     cdChanges.Add("judge", -1 * retTalents[2]);
@@ -138,7 +142,7 @@ public class TalentHandler
                     modifiers.Add(("crit",(stats)=>retTalents[6]));
                     break;
                 case 7:
-                    abilities["judge"] = new Ability(10,(stats)=>Ability.GetRandomDouble(60,64)+0.429*stats["sp"],3,"physical","Judgment of Command",65,dmgType:"holy");
+                    abilities["judge"] = new Ability(10,(stats)=>Ability.GetRandomDouble(60,64)+0.429*stats["sp"],3,"physical","Judgment of Command",65+0.06*baseMana,dmgType:"holy");
                     procs["seal"] = new Ability(0,(stats)=>0.7*stats["dmg"]+0.2*stats["sp"],19999,"physical","Seal of Command",0,procChance:100*(7*cStats["speed"])/60,dmgType:"holy");
                     break;
                 case 11:
@@ -202,10 +206,13 @@ public class TalentHandler
         }
         if (head == "xg")
         {
-            // +18 holy crit
+            cStats["hp_crit"] += 18;
         }else if(head =="xh")
         {
-            // consec can crit
+            try
+            {
+                abilities["consec"].CanCrit = true;
+            }catch{}
         }
         if (wrist == "xj")
         {
@@ -216,14 +223,18 @@ public class TalentHandler
         }
         if (waist == "w9")
         {
-            //+17 spell hit
+            cStats["sp_hit"] = 17;
         }else if (waist == "wa")
         {
-            // sp +=30%ap
+            cStats["sp"] += cStats["ap"] * 0.2;
         }
         else if (waist == "wb")
         {
-            // holy shock +20% dmg crits with holy shock -100% cd on shock exo refund holy shock mana
+            try
+            {
+                abilities["holyShock"].PercentMod += 0.2;
+            }catch{}
+            // crits with holy shock -100% cd on shock exo refund holy shock mana
         }
         if (feet == "sk")
         {
