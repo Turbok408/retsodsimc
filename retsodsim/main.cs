@@ -27,8 +27,8 @@ namespace retsodsim
                 {"mana",552 + 320}, // this assume one lesser mana potion
                 {"spirit",38}, // just base spirit no spirit stat in databse
                 {"haste",100},
-                {"hp_hit",100},
-                {"hp_crit",100}
+                {"hp_hit",0},
+                {"hp_crit",0}
             };
             if (statModifiers != null)
             {
