@@ -15,12 +15,14 @@ public class Instance
     private Dictionary<string, OnHitUseStat> _onHitUseStats;
     private List<string> _activeProcs =[];
     private bool _onGcd = false;
+    private double _maxMana;
     public Instance(Dictionary<string, Ability> abilities, Dictionary<string, double> stats, double time, Dictionary<string, OnHitUseStat> onHitUseStats,Dictionary<string,Ability>? procs)
     {
         _abilities = abilities;
         _normalStats = stats;
         _time = time;
         _mana = stats["mana"];
+        _maxMana = stats["mana"];
         _onHitUseStats = onHitUseStats;
         _proccedStats = stats;
         Procs = procs;
@@ -56,6 +58,18 @@ public class Instance
             entry.Value.Reset();
         }
         _time = 120; 
+    }
+
+    private void DoCritProc((List<string>, double) procList)
+    {
+        foreach (var entry in procList.Item1)
+        {
+            try
+            {
+                _abilities[entry].Cd = 0;
+            }catch{}
+        }
+        _mana += procList.Item2;
     }
     private void Iterate() // clean this up a little
             {
@@ -103,7 +117,7 @@ public class Instance
                     if (_mana >= _abilities[toPress].ManaCost && !_onGcd)
                     {
                         {
-                            _abilities[toPress].do_dmg(_proccedStats);
+                            DoCritProc(_abilities[toPress].do_dmg(_proccedStats));
                             _mana -= _abilities[toPress].ManaCost;
                             if (_abilities[toPress].Name != "Melee")
                             {
@@ -118,7 +132,7 @@ public class Instance
                                         if (_time >= 0)
                                         {
                                             var cdOffset = entry.Value._currentCd;
-                                            entry.Value.do_dmg(_proccedStats);
+                                            DoCritProc(entry.Value.do_dmg(_proccedStats));
                                             entry.Value._currentCd = entry.Value.Cd + cdOffset;
                                         }
                                     }
@@ -130,11 +144,13 @@ public class Instance
                     }
                     else if (_abilities[toPress].Name == "Melee")
                     {
-                        _abilities[toPress].do_dmg(_proccedStats);
+                        DoCritProc(_abilities[toPress].do_dmg(_proccedStats));
                         _mana -= _abilities[toPress].ManaCost;
                         
                     }
                 }
+
+                _mana += _proccedStats["%manaPer3"] / (3 * 0.01)*_maxMana; // this acts continuously and can go over your max mana but that prob wouldnt happend unless you afk
                 _fiveSecondTimer += 0.01;
                 foreach (var entry in _abilities)
                 {

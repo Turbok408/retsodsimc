@@ -11,24 +11,25 @@ namespace retsodsim
             var dmgProcs = new Dictionary<string, Ability>();
             Dictionary<string, double> stats =new Dictionary<string, double>
             {
-                { "agi", 34 + 8 + 4 + 3 },
+                { "agi", 46 +25 +8}, //ASUMMES SCROLLS DONT STACK
                 { "sta", 0 },
-                { "stg", 48 + 8 + 3 + 4 },
-                { "ap", 151 + 20 + 60 + 55 },
+                { "stg", 70 + 25 +8},
+                { "ap", 240 +45 +85 +85},
                 { "speed", 0 },
                 { "mindmg", 3 }, // ecnhant
                 { "maxdmg", 3 },
-                { "crit", 2 },
+                { "crit", 3},
                 { "hit", 0 },
-                { "sp", 25 },
+                { "sp", 42},
                 { "sp_hit", 3 },
-                { "sp_crit", 4.12 + 2}, // no idea where 4.12 base crit comes from
-                { "int", 36 + 5 +7 }, // this is just base int +int buff + int pot no int stat in database
+                { "sp_crit", 3.8+3 +4}, // no idea where 3.8 base crit comes from
+                { "int", 49 +15+8}, 
                 {"mana",552 + 320}, // this assume one lesser mana potion
-                {"spirit",38}, // just base spirit no spirit stat in databse
-                {"haste",100},
+                {"spirit",56+8}, 
+                {"haste",100 +10},
                 {"hp_hit",0},
-                {"hp_crit",0}
+                {"hp_crit",0},
+                {"%manaPer3",0}
             };
             if (statModifiers != null)
             {
@@ -42,8 +43,8 @@ namespace retsodsim
             var  allIds = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string,dynamic>>>(json);
             string itemsIdsTxt = File.ReadAllText(Directory.GetCurrentDirectory() + "\\saves.json");
             var itemsIdsDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(itemsIdsTxt);
-            List<string> testSet = itemsIdsDict["save1"];
-            //List<string> testSet = ["211505", "209422", "14749", "209523", "211504", "2868", "211423", "6460", "6087", "209689", "209565","2933", "21568", "211449", "209562"];
+                //List<string> testSet = itemsIdsDict["save1"];
+            List<string> testSet = ["215166", "213344", "213304", "213307", "213313", "19581", "216506", "213319", "213325", "213332", "9637","19515", "213284", "211449", "216505"];
             onUse.Add("5",new OnHitUseStat(10, 600,"haste",10));
             foreach (var entry in testSet)
             {
@@ -57,7 +58,7 @@ namespace retsodsim
                     else
                     {
                         double dmg = 0;
-                        double procChance = 10;
+                        double procChance = 10; // this assumes 10% proc chance unless otherwise stated.
                         string school = "spell";
                         if (allIds[entry]["proc"].tick != null)
                         {
@@ -95,24 +96,55 @@ namespace retsodsim
                     catch{}
                 }
             }
-            var setNum = 0;
+            Dictionary<string, int> sets = new Dictionary<string, int>();
             foreach (var entry in testSet)
             {
-                if (entry == "211505" | entry == "211504" | entry == "211504")
+                try
                 {
-                    setNum += 1;
+                    if (sets.ContainsKey(allIds[entry]["set"]))
+                    {
+                        sets[allIds[entry]["set"]] += 1;
+                    }
+                    else
+                    {
+                        sets.Add(allIds[entry]["set"],1);
+                    }
+                }
+                catch{}
+            }
+            foreach (var entry in sets)
+            {
+                switch (entry.Key)
+                {
+                    case "InsulatedAp":
+                        if (entry.Value >= 2)
+                        {
+                            stats["crit"] += 1;
+                        }
+                        break;
+                    case "Electromantic":
+                        if (entry.Value >= 2)
+                        {
+                            stats["ap"] += 24;
+                            if (entry.Value==3)
+                            {
+                                // mana back
+                            }
+                        }
+                        break;
+                    case "H.A.Z.A.R.D.":
+                        if (entry.Value >= 2)
+                        {
+                            stats["ap"] += 12;
+                            if (entry.Value == 3)
+                            {
+                                stats["hit"] += 1;
+                                stats["sp_hit"] += 1;
+                            }
+                        }
+                        break;
                 }
             }
-            if (setNum == 2)
-            {
-                stats["ap"] += 12;
-            }
-            else if (setNum == 3)
-            {
-                stats["ap"] += 12;
-                stats["hit"] += 1;
-            }
-
             if (statModifiers != null)
             {
                 foreach (var entry in statModifiers)
@@ -120,6 +152,8 @@ namespace retsodsim
                     stats[entry.Key] += entry.Value;
                 }
             }
+            stats["agi"] *= 1.1; //lion buff
+            stats["crit"] += stats["agi"] / 20 ;// only works as no talents can change agi
             var statAbilitys = TalentHandler.return_ability_stats(stats, talents);
             stats = statAbilitys.Item1;
             var abilitys = statAbilitys.Item2;
@@ -128,13 +162,11 @@ namespace retsodsim
                 dmgProcs.Add(entry.Key,entry.Value);
             }
             // apply % buffs after talents? idk if this is correct
-            stats["agi"] *= 1.1; //lion buff
             stats["stg"] *= 1.1; //lion buff
             stats["ap"] += 2 * stats["stg"];
             var dps = ((stats["mindmg"] + stats["maxdmg"]) / 2)/stats["speed"];
             var j = (((stats["mindmg"] + stats["maxdmg"]) / 2) / stats["speed"] + stats["ap"] / 14) * stats["speed"];
             stats.Add("dmg",(dps+stats["ap"]/14)*stats["speed"]);
-            stats["crit"] += stats["agi"] / 20 ;
             stats["mana"] += stats["int"] * 15;
             stats["sp_crit"] += stats["int"] / 54;
             stats["hp_hit"] += stats["sp_hit"];
@@ -250,7 +282,17 @@ namespace retsodsim
             }
         }
     }
-
+/* wf ap?
+ seal of blood can proc every same as melee + can dodge etc?
+ seal of blood changes with new patch?
+ check new runes
+ crit procs can be optimsed but prob not needed
+ 55550100501051--50205051_166wb86sp
+ --55230051100315_156p266wa76sn86sk96xka6nx
+ weopon procs dont take talents modifiers? this could be correct
+ seal of wisdom
+ sor dmg with new rank
+ */
 
 
 

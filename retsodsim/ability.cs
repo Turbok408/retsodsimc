@@ -20,6 +20,8 @@
         public string DmgType;
         public double ManaCost;
         public bool CanCrit;
+        public (List<string>,double) OnCritProc = (["0"],0); //list<cd refunds> mana refund
+        public double modCrit;
         
         public Ability(double cd, Func<Dictionary<string, double>, double> dmgFunc, int prio, string school,
             string name,double manaCost, double procChance = 100, List<string>? procNames = null, string dmgType = "",bool cancrit = true)
@@ -43,7 +45,7 @@
             }
         }
 
-        public void do_dmg(Dictionary<string, double> stats)
+        public (List<string>,double) do_dmg(Dictionary<string, double> stats)
         {
             if (GetRandom.Next(0, 100) <= _procChance)
             {
@@ -58,7 +60,12 @@
                         entry.Value.do_dmg(stats);
                     }
                 }
+                if(hitRatio==2.0)
+                {
+                    return OnCritProc;
+                }
             }
+            return (["0"],0);
         }
 
         private double DoCrit(Dictionary<string, double> stats)
@@ -83,8 +90,8 @@
                         { (0, 5 - hit), 0 },
                         {(5 - hit, 5 - hit + 6.5),0 },
                         {(5-hit+6.5,glanceChance+5-hit+6.5),GetRandomDouble(Math.Min(0.91, 1.3 - 0.05 * ratingDif), 1.2 - 0.03 * ratingDif)},
-                        { (glanceChance + 5 - hit + 6.5, glanceChance + 5 - hit + 6.5 + crit), 2 },
-                        { (glanceChance + 5 - hit + 6.5 + crit, 100), 1 }
+                        { (glanceChance + 5 - hit + 6.5, glanceChance + 5 - hit + 6.5 + crit+modCrit), 2 },
+                        { (glanceChance + 5 - hit + 6.5 + crit+modCrit, 100), 1 }
                     };
                     break;
                 
@@ -92,8 +99,8 @@
                     attackTable = new Dictionary<(double, double), double>()
                     {
                         { (0, 5 - hit), 0 },
-                        { (5 - hit + 6.5, 5 - hit + 6.5 + crit), 2 },
-                        { (5 - hit + 6.5 + crit, 100), 1 }
+                        { (5 - hit + 6.5, 5 - hit + 6.5 + crit+modCrit), 2 },
+                        { (5 - hit + 6.5 + crit+modCrit, 100), 1 }
                     };
                     break;
                     
@@ -101,8 +108,8 @@
                     attackTable = new Dictionary<(double, double), double>()
                     {
                         { (0, 4), 0 },
-                        { (4, 5 - stats["sp_crit"] + 6.5 + 9), 2 },
-                        { (4 + stats["sp_crit"], 100), 1 }
+                        { (4, 5 - stats["sp_crit"] +modCrit+ 6.5 + 9), 2 },
+                        { (4 + stats["sp_crit"]+modCrit, 100), 1 }
                     };
                     break;
                 case "holy":
@@ -110,7 +117,7 @@
                     {
                         attackTable = new Dictionary<(double, double), double>()
                         {
-                            { (0, stats["hp_crit"]), 2 },
+                            { (0, stats["hp_crit"]+modCrit), 2 },
                             { (stats["hp_crit"], 100), 1 }
                         };
                     }
@@ -200,4 +207,15 @@
         }
     }
 }
+/* add auras (done except ap procs on wf?)
+ options for buffs(why sim without buffs?)
+ --50230001_116xg56p266wb76sn86sp96xka6nx
+ seal of blood mana back
+ no sp items in db?
+ add new rune affects or effects?
+ add armour
+ add errors
+ add benidictiion
+ 
+ */
 

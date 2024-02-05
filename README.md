@@ -1,10 +1,7 @@
 # Added
-mana\
-item procs\
-int and spirit\
-statweights sim\
-fixed random bugs\
-added sor
+new runes\
+new items\
+updated base stats
 
 # Current Issues:
 assumes you have all buffs + enchants\

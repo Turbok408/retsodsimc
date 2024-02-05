@@ -34,7 +34,7 @@ public class TalentHandler
         };
         var abilities = new Dictionary<string, Ability>()
         {
-            { "judge", new Ability(8,(stats)=>0.5*stats["sp"]+Ability.GetRandomDouble(53,58),100,"holy","Judgement of Righteousness",60+0.06*baseMana) }, //add sor
+            { "judge", new Ability(8,(stats)=>0.5*stats["sp"]+Ability.GetRandomDouble(96 ,105 ),100,"holy","Judgement of Righteousness",60+0.06*baseMana) }, //add sor
             {
                 "heavy Dynamite",
                 new Ability(60,(stats)=> Ability.GetRandomDouble(128,178) ,100,"spell","Heavy Dynamite",0)
@@ -91,8 +91,8 @@ public class TalentHandler
                     break;
                 case 3:
                 {
-                    abilities["seal"].PercentMod += 0.03 * holyTalents[3]; // no need to check for name as cant be any other seal currently
-                    abilities["judget"].PercentMod += 0.03 * holyTalents[3];
+                    procs["seal"].PercentMod += 0.03 * holyTalents[3]; // no need to check for name as cant be any other seal currently
+                    abilities["judge"].PercentMod += 0.03 * holyTalents[3];
                     break;
                 }
                 case 5:
@@ -121,12 +121,13 @@ public class TalentHandler
         }
 
         double judgeManaReduction = 1; // this is stupid
+        double retCritMods = 0; // this is disgusting is cba to re write this
         for (int i = 0; i < retTalents.Length; i++)
         {
             switch(i)
             {
                 case 0:
-                    modifiers.Add(("ap",(stats) => 55*(0.04*retTalents[0])));
+                    modifiers.Add(("ap",(stats) => 85*(0.04*retTalents[0])));
                     break;
                 case 1 :
                     judgeManaReduction -= 0.03 * retTalents[1];
@@ -140,6 +141,7 @@ public class TalentHandler
                     break;
                 case 6:
                     modifiers.Add(("crit",(stats)=>retTalents[6]));
+                    retCritMods += retTalents[6];
                     break;
                 case 7:
                     abilities["judge"] = new Ability(10,(stats)=>Ability.GetRandomDouble(60,64)+0.429*stats["sp"],3,"physical","Judgment of Command",65+0.06*baseMana,dmgType:"holy");
@@ -193,16 +195,16 @@ public class TalentHandler
         }
         else if (chest == "p3")
         {
-            procs["seal"] = new Ability(0,(stats)=>0.35*stats["dmg"],1000,"physical","Seal of Blood",0,dmgType:"holy");
+            procs["seal"] = new Ability(0,(stats)=>0.4*stats["dmg"],1000,"physical","Seal of Blood",0,dmgType:"holy");
             abilities["judge"] = new Ability(10,(stats)=>0.7*stats["dmg"],3,"physical","Judgement of Blood",0.05*baseMana,dmgType:"holy");
         }
         if (hand == "x")
         {
-            abilities.Add("cs", new Ability(6,(stats)=>0.76*stats["dmg"],1,"physical","Crusader Strike",-0.02*baseMana));
+            abilities.Add("cs", new Ability(6,(stats)=>0.75*stats["dmg"],1,"physical","Crusader Strike",-0.05*baseMana));
         }
         if (legs == "sn")
         {
-            abilities.Add("exo", new Ability(15,(stats)=> Ability.GetRandomDouble(90+stats["sp"]*0.429,102+stats["sp"]*0.429),2,"holy","Exocism",85));
+            abilities.Add("exo", new Ability(15,(stats)=> Ability.GetRandomDouble(225 +stats["sp"]*0.429,253 +stats["sp"]*0.429),2,"holy","Exocism",85));
         }
         if (head == "xg")
         {
@@ -212,14 +214,31 @@ public class TalentHandler
             try
             {
                 abilities["consec"].CanCrit = true;
+                abilities["consec"].modCrit += cStats["crit"] + retCritMods;
+            }catch{}
+            try
+            {
+                abilities["exo"].modCrit += cStats["crit"]+ retCritMods;
+            }catch{}
+            try
+            {
+                abilities["holyShock"].modCrit += cStats["crit"]+ retCritMods;
+            }catch{}
+            try
+            {
+                abilities["holyWrath"].modCrit += cStats["crit"]+ retCritMods;
             }catch{}
         }
         if (wrist == "xj")
         {
-            // exo holy wrath cd -50% add holy wrath 
+            try
+            {
+                abilities["exo"].Cd /= 0.5;
+            }catch{}
+            // holy wrath cd -50% add holy wrath 
         }else if (wrist == "xk")
         {
-            // hammer of wrath 0 cd for 10% of time
+            // hammer of wrath 0 cd for 10% of time add holy wrath
         }
         if (waist == "w9")
         {
@@ -233,21 +252,25 @@ public class TalentHandler
             try
             {
                 abilities["holyShock"].PercentMod += 0.2;
+                abilities["holyShock"].OnCritProc = (["holyShock", "exo"], abilities["holyShock"].ManaCost);
             }catch{}
             // crits with holy shock -100% cd on shock exo refund holy shock mana
-        }
-        if (feet == "sk")
-        {
-            //+5% max mana per 3sec
-        }else if (feet == "sp")
-        {
-            // aa crits => shock + exo -100% cd
         }
         procs.Add("wf",
             new Ability(0, (stats) => ((stats["dmg"]/stats["speed"]-stats["ap"]/ 14) + (1.2 * stats["ap"]) / 14 )* stats["speed"],199999,"aa","Windfury",0,procChance:20,procNames:["seal"])); // think this should be deep copy idk if this works with ap procs
         abilities.Add("melee",
-            new Ability(cStats["speed"], (stats) => stats["dmg"], -100, "aa", "Melee",0, procNames: ["wf","seal"]));
-        // doesnt change with haste
+            new Ability(cStats["speed"]/cStats["haste"], (stats) => stats["dmg"], -100, "aa", "Melee",0, procNames: ["wf","seal"]));
+        if (feet == "sk")
+        {
+            cStats["%manaPer3"] += 0.05;
+        }else if (feet == "sp")
+        {
+            try
+            {
+                abilities["melee"].OnCritProc = (["holyShock", "exo"], 0);
+                // aa crits => shock + exo -100% cd
+            }catch{}
+        }
         var tempDict = cStats.DeepClone();
         foreach (var VARIABLE in tempDict)
         {
