@@ -5,31 +5,33 @@ namespace retsodsim
 {
     class Program
     {
-        static (Dictionary<string,double>,Dictionary<string,Ability>,Dictionary<string,OnHitUseStat>,Dictionary<string,Ability>) GetStats(string talents, Dictionary<string,double>? statModifiers = null)
+        private static string choice = "";
+        static (Dictionary<string,double>,Dictionary<string,Ability>,Dictionary<string,OnHitUseStat>,Dictionary<string,Ability>) GetStats(string talents,string race, Dictionary<string,double>? statModifiers = null)
         {
             var onUse = new Dictionary<string, OnHitUseStat>();
             var dmgProcs = new Dictionary<string, Ability>();
             Dictionary<string, double> stats =new Dictionary<string, double>
             {
-                { "agi", 46 +25 +8}, //ASUMMES SCROLLS DONT STACK
+                { "agi", 46 +25 +3+2+3}, //ASUMMES SCROLLS DONT STACK
                 { "sta", 0 },
-                { "stg", 70 + 25 +8},
+                { "stg", 70 + 25 +8 +2 + 5 + 5},
                 { "ap", 240 +45 +85 +85},
                 { "speed", 0 },
-                { "mindmg", 3 }, // ecnhant
-                { "maxdmg", 3 },
+                { "mindmg", 5 }, // enchant
+                { "maxdmg", 5 },
                 { "crit", 3},
                 { "hit", 0 },
                 { "sp", 42},
                 { "sp_hit", 3 },
                 { "sp_crit", 3.8+3 +4}, // no idea where 3.8 base crit comes from
                 { "int", 49 +15+8}, 
-                {"mana",552 + 320}, // this assume one lesser mana potion
+                {"mana",987 + 800}, // this assume one greater mana potion
                 {"spirit",56+8}, 
                 {"haste",100 +10},
                 {"hp_hit",0},
                 {"hp_crit",0},
-                {"%manaPer3",0}
+                {"%manaPer3",0},
+                {"skill", 0} // YOU ARE HUMAN WITH SWORD
             };
             if (statModifiers != null)
             {
@@ -43,8 +45,22 @@ namespace retsodsim
             var  allIds = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string,dynamic>>>(json);
             string itemsIdsTxt = File.ReadAllText(Directory.GetCurrentDirectory() + "\\saves.json");
             var itemsIdsDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(itemsIdsTxt);
-                //List<string> testSet = itemsIdsDict["save1"];
-            List<string> testSet = ["215166", "213344", "213304", "213307", "213313", "19581", "216506", "213319", "213325", "213332", "9637","19515", "213284", "211449", "216505"];
+            if (choice == "")
+            {
+                Console.WriteLine("Enter set to sim: ");
+                foreach (var entry in itemsIdsDict)
+                {
+                    string names ="";
+                    foreach (var id in entry.Value)
+                    {
+                        names += allIds[id]["name"]+", ";
+                    }
+                    Console.WriteLine($"{entry.Key} : {names}");
+                }
+                Program.choice= Console.ReadLine();
+            }
+            List<string> testSet = itemsIdsDict[Program.choice];
+                //List<string> testSet = ["215166", "213344", "213304", "213307", "213313", "19581", "216506", "213319", "213325", "213332", "9637","19515", "213284", "211449", "216505"];
             onUse.Add("5",new OnHitUseStat(10, 600,"haste",10));
             foreach (var entry in testSet)
             {
@@ -111,6 +127,16 @@ namespace retsodsim
                     }
                 }
                 catch{}
+                if (race == "human")
+                {
+                    try
+                    {
+                        if (allIds[entry]["type"] == "Sword" || allIds[entry]["type"] == "Mace")
+                        {
+                            stats["skill"] += 5;
+                        }
+                    }catch{}
+                }
             }
             foreach (var entry in sets)
             {
@@ -157,6 +183,10 @@ namespace retsodsim
             var statAbilitys = TalentHandler.return_ability_stats(stats, talents);
             stats = statAbilitys.Item1;
             var abilitys = statAbilitys.Item2;
+            if (itemsIdsDict[Program.choice].Contains("215435"))
+            {
+                abilitys["judge"].ManaCost -= 10;
+            }
             foreach (var entry in statAbilitys.Item3)
             {
                 dmgProcs.Add(entry.Key,entry.Value);
@@ -171,10 +201,15 @@ namespace retsodsim
             stats["sp_crit"] += stats["int"] / 54;
             stats["hp_hit"] += stats["sp_hit"];
             stats["hp_crit"] += stats["sp_crit"];
+            if (race == "human")
+            {
+                stats["spirit"] *= 1.05;
+            }
             return (stats, abilitys,onUse,dmgProcs);
         }
         private static Dictionary<string,List<double>> RunSim(int iterations, double time,Dictionary<string,double> stats,Dictionary<string,Ability> abilities,Dictionary<string,OnHitUseStat> onHitUseStat,Dictionary<string,Ability> procs)
         {
+            stats["mana"] += (33 * time / stats["speed"])/2; // judgement of wisdom in stupid way
             var instArray = new Instance[iterations];
                 var tasks = new List<Task>();
                 for (int i = 0; i < iterations; i++) 
@@ -186,6 +221,7 @@ namespace retsodsim
                 }
                 Task.WaitAll(tasks.ToArray());
                 Dictionary<string, List<double>> dmg = instArray[0].Output();
+                Console.WriteLine($"Oom time {instArray[0].OomTicks*0.01} = {(instArray[0].OomTicks)/time}%");
                 for (int i = 1; i < iterations; i++)
                 {
                     foreach (var entry in instArray[i].Output()) // sum all dmg from each instance
@@ -211,7 +247,7 @@ namespace retsodsim
             Console.WriteLine(dmgTotal + " dps");
         }
 
-        private static void StatWeights(int iterations, double time,string talents) //could optimize this a lot but cba
+        private static void StatWeights(int iterations, double time,string talents,string race) //could optimize this a lot but cba
         {
             var statsThatDoDmg = new Dictionary<string, double>
             {
@@ -229,7 +265,7 @@ namespace retsodsim
             
             foreach (var entry in statsThatDoDmg)
             {
-                var statAbilites = GetStats(talents,statModifiers : new Dictionary<string,double> {{entry.Key,50}});
+                var statAbilites = GetStats(talents,race,statModifiers : new Dictionary<string,double> {{entry.Key,50}});
                 var dmg = RunSim(iterations, time, statAbilites.Item1, statAbilites.Item2, statAbilites.Item3,
                     statAbilites.Item4);
                 double dmgTotal = 0;
@@ -239,7 +275,7 @@ namespace retsodsim
                 }
                 statsThatDoDmg[entry.Key] = dmgTotal;
             }
-            var basestatAbilites = GetStats(talents);
+            var basestatAbilites = GetStats(talents,race);
             var baseDmg = RunSim(iterations, time, basestatAbilites.Item1, basestatAbilites.Item2, basestatAbilites.Item3,
                 basestatAbilites.Item4);
             var baseDmgTotal = 0.0;
@@ -267,7 +303,9 @@ namespace retsodsim
                 int iterations =Convert.ToInt32(Console.ReadLine()) ;
                 Console.WriteLine("Input Talents: ");
                 string talents = Console.ReadLine();
-                var statAbilites = GetStats(talents);
+                Console.WriteLine("Input race");
+                string race = Console.ReadLine().ToLower();
+                var statAbilites = GetStats(talents,race);
                 Console.WriteLine("press 1 for sim, 2 for stat weights (this will do iterations*11 iterations)");
                 if (Console.ReadLine() == "1")
                 {
@@ -276,7 +314,7 @@ namespace retsodsim
                 }
                 else
                 {
-                    StatWeights(iterations,time,talents);
+                    StatWeights(iterations,time,talents,race);
                 }
                 Console.ReadLine();
             }
@@ -284,14 +322,12 @@ namespace retsodsim
     }
 /* wf ap?
  seal of blood can proc every same as melee + can dodge etc?
- seal of blood changes with new patch?
- check new runes
- crit procs can be optimsed but prob not needed
  55550100501051--50205051_166wb86sp
- --55230051100315_156p266wa76sn86sk96xka6nx
- weopon procs dont take talents modifiers? this could be correct
- seal of wisdom
+ --55230051100315_156p266wa76sn86sk96xka6nx all
+ 1--55230051000315_156p266wa76sn86spa6nx predicted p2?
+ judgement of wisdom doesnt scale with haste
  sor dmg with new rank
+ ppm on procs dont work
  */
 
 

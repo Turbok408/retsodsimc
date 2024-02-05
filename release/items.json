@@ -38547,7 +38547,13 @@
 		"name": "Tempered Interference-Negating Helmet",
 		"stg": 16,
 		"sta": 16,
-		"crit": 1
+		"crit": 1,
+		"proc": {
+			"stat": "haste",
+			"amount": 20,
+			"duration": 10,
+			"cd": 600
+		}
 	},
 	"215166": {
 		"id": 215166,
@@ -38557,7 +38563,13 @@
 		"agi": 14,
 		"stg": 14,
 		"sta": 14,
-		"hit": 1
+		"hit": 1,
+		"proc": {
+			"stat": "haste",
+			"amount": 20,
+			"duration": 10,
+			"cd": 600
+		}
 	},
 	"215382": {
 		"id": 215382,
@@ -39959,7 +39971,13 @@
 		"name": "Hyperconductive Goldwrap",
 		"sta": 9,
 		"crit": 1,
-		"hit": 1
+		"hit": 1,
+		"proc": {
+			"stat": "crit",
+			"amount": 5,
+			"duration": 30,
+			"cd": 900
+		}
 	},
 	"215380": {
 		"id": 215380,

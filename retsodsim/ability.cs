@@ -76,7 +76,7 @@
                 double hit = stats["hit"];
             double crit = stats["crit"];
             float glanceChance = 10 + 2 * 3;
-            float ratingDif = 140 - 130;
+            double ratingDif = 15-stats["skill"];
             var roll = GetRandom.Next(0, 100);
             var attackTable = new Dictionary<(double, double), double>()
             {

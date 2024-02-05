@@ -16,6 +16,7 @@ public class Instance
     private List<string> _activeProcs =[];
     private bool _onGcd = false;
     private double _maxMana;
+    public int OomTicks;
     public Instance(Dictionary<string, Ability> abilities, Dictionary<string, double> stats, double time, Dictionary<string, OnHitUseStat> onHitUseStats,Dictionary<string,Ability>? procs)
     {
         _abilities = abilities;
@@ -111,7 +112,6 @@ public class Instance
                         }
                     }
                 }
-
                 if (buttonPressed)
                 {
                     if (_mana >= _abilities[toPress].ManaCost && !_onGcd)
@@ -121,7 +121,7 @@ public class Instance
                             _mana -= _abilities[toPress].ManaCost;
                             if (_abilities[toPress].Name != "Melee")
                             {
-                                
+
                                 _fiveSecondTimer = 0;
                                 _onGcd = true;
                                 foreach (var entry in _abilities)
@@ -147,9 +147,11 @@ public class Instance
                         DoCritProc(_abilities[toPress].do_dmg(_proccedStats));
                         _mana -= _abilities[toPress].ManaCost;
                         
+                    }else if (_mana <= _abilities[toPress].ManaCost && !_onGcd)
+                    {
+                        OomTicks += 1;
                     }
                 }
-
                 _mana += _proccedStats["%manaPer3"] / (3 * 0.01)*_maxMana; // this acts continuously and can go over your max mana but that prob wouldnt happend unless you afk
                 _fiveSecondTimer += 0.01;
                 foreach (var entry in _abilities)
