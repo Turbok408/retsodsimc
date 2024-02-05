@@ -74,7 +74,8 @@ namespace retsodsim
                     else
                     {
                         double dmg = 0;
-                        double procChance = 10; // this assumes 10% proc chance unless otherwise stated.
+                        double cd = 0;
+                        double Chance = 10; // this assumes 10% proc chance unless otherwise stated.
                         string school = "spell";
                         if (allIds[entry]["proc"].tick != null)
                         {
@@ -82,25 +83,33 @@ namespace retsodsim
                                 Convert.ToDouble(proc["duration"]) / Convert.ToDouble(proc["interval"]);
                             dmg += Convert.ToDouble(proc["tick"]) * amountOfTicks;
                         }
-                        else if (allIds[entry]["proc"].dmg != null)
+                        if (allIds[entry]["proc"].dmg != null)
                         {
                             dmg += Convert.ToDouble(proc["dmg"]);
                         }
-                        else if (allIds[entry]["proc"].ppm != null)
+                        if (allIds[entry]["proc"].ppm != null)
                         {
-                            procChance = 100 * (Convert.ToDouble(proc["ppm"]) * stats["speed"]) / 60; // this wont work 
+                            Chance = 100 * (Convert.ToDouble(proc["ppm"]) * stats["speed"]) / 60; // this wont work 
                         }
-                        else if (allIds[entry]["proc"].chance != null)
+                        if (allIds[entry]["proc"].chance != null)
                         {
-                            procChance = Convert.ToDouble(proc["chance"]);
+                            Chance = Convert.ToDouble(proc["chance"]);
                         }
-                        else if (allIds[entry]["proc"].bleed != null)
+                        if (allIds[entry]["proc"].bleed != null)
                         {
                             school = "physical";
                         }
+                        if (allIds[entry]["proc"].cd != null)
+                        {
+                            cd = Convert.ToDouble(allIds[entry]["proc"].cd);
+                        }
+                        if(allIds[entry]["slot"] == "trinket")
+                        {
+                            Chance = 100;
+                        }
                         dmgProcs.Add(allIds[entry]["name"],
-                            new Ability(0, new Func<Dictionary<string, double>, double>((stats) => dmg), 1000, school,
-                                allIds[entry]["name"], 0,procChance : procChance));
+                            new Ability(cd/10, new Func<Dictionary<string, double>, double>((stats) => dmg), 1000, school,
+                                allIds[entry]["name"], 0,procChance : Chance));
                     }
                 }
                 foreach (var statType in (stats.Keys))
@@ -205,6 +214,7 @@ namespace retsodsim
             {
                 stats["spirit"] *= 1.05;
             }
+            //abilitys.Concat(dmgProcs);
             return (stats, abilitys,onUse,dmgProcs);
         }
         private static Dictionary<string,List<double>> RunSim(int iterations, double time,Dictionary<string,double> stats,Dictionary<string,Ability> abilities,Dictionary<string,OnHitUseStat> onHitUseStat,Dictionary<string,Ability> procs)
@@ -221,7 +231,7 @@ namespace retsodsim
                 }
                 Task.WaitAll(tasks.ToArray());
                 Dictionary<string, List<double>> dmg = instArray[0].Output();
-                Console.WriteLine($"Oom time {instArray[0].OomTicks*0.01} = {(instArray[0].OomTicks)/time}%");
+                Console.WriteLine($"oom time {instArray[0].OomTicks*0.01}s = {(instArray[0].OomTicks)/time}%");
                 for (int i = 1; i < iterations; i++)
                 {
                     foreach (var entry in instArray[i].Output()) // sum all dmg from each instance
@@ -262,7 +272,6 @@ namespace retsodsim
                 { "int", 0}, 
                 {"haste",0},
             };
-            
             foreach (var entry in statsThatDoDmg)
             {
                 var statAbilites = GetStats(talents,race,statModifiers : new Dictionary<string,double> {{entry.Key,50}});
@@ -301,7 +310,7 @@ namespace retsodsim
                 double time =Convert.ToDouble(Console.ReadLine()) ;
                 Console.WriteLine("Iterations?");
                 int iterations =Convert.ToInt32(Console.ReadLine()) ;
-                Console.WriteLine("Input Talents: ");
+                Console.WriteLine("Input wowhead Talents+Runes string: ");
                 string talents = Console.ReadLine();
                 Console.WriteLine("Input race");
                 string race = Console.ReadLine().ToLower();
@@ -325,8 +334,8 @@ namespace retsodsim
  55550100501051--50205051_166wb86sp
  --55230051100315_156p266wa76sn86sk96xka6nx all
  1--55230051000315_156p266wa76sn86spa6nx predicted p2?
+ 1--55230051000315_156p366wa76sn86spa6nx sob
  judgement of wisdom doesnt scale with haste
- sor dmg with new rank
  ppm on procs dont work
  */
 

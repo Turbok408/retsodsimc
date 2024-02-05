@@ -7,7 +7,7 @@ namespace retsodsim;
 
 public class TalentHandler
 {
-    private const double baseMana = 552;
+    private const double baseMana = 987;
 
     private static string TryReduceString(string theString)
     {
@@ -30,14 +30,14 @@ public class TalentHandler
         string talents = talentsRunes.Split("_")[0];
         var procs = new Dictionary<string, Ability>
         {
-            { "seal", new Ability(0,(stats)=>23.74*stats["speed"]+0.125*stats["sp"],100,"holy","Seal of Righteousness",0) } //only correct for 2 handers
+            { "seal", new Ability(0,(stats)=>(1.2*(2112*1.2*1.03*stats["speed"]/100))/2+0.1*stats["sp"],100,"holy","Seal of Righteousness",0) } //thinks this is correct
         };
         var abilities = new Dictionary<string, Ability>()
         {
-            { "judge", new Ability(8,(stats)=>0.5*stats["sp"]+Ability.GetRandomDouble(96 ,105 ),100,"holy","Judgement of Righteousness",60+0.06*baseMana) }, //add sor
+            { "judge", new Ability(8,(stats)=>0.5*stats["sp"]+Ability.GetRandomDouble(96 ,105 ),100,"holy","Judgement of Righteousness",120+0.06*baseMana) }, //add sor
             {
-                "heavy Dynamite",
-                new Ability(60,(stats)=> Ability.GetRandomDouble(128,178) ,100,"spell","Heavy Dynamite",0)
+                "Dynamite",
+                new Ability(60,(stats)=> Ability.GetRandomDouble(340,460) ,100,"spell","Dense Dynamite",0)
             }
         };
         var dmgChanges = new Dictionary<string, (double, double)>
@@ -268,7 +268,7 @@ public class TalentHandler
             try
             {
                 abilities["melee"].OnCritProc = (["holyShock", "exo"], 0);
-                // aa crits => shock + exo -100% cd
+                //aa crits => shock + exo -100% cd
             }catch{}
         }
         var tempDict = cStats.DeepClone();

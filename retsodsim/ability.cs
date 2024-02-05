@@ -47,7 +47,7 @@
 
         public (List<string>,double) do_dmg(Dictionary<string, double> stats)
         {
-            if (GetRandom.Next(0, 100) <= _procChance)
+            if (GetRandom.Next(0, 100) <= _procChance && _currentCd <=0)
             {
                 _currentCd = Cd;
                 var hitRatio = DoCrit(stats);

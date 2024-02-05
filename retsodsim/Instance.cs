@@ -17,7 +17,9 @@ public class Instance
     private bool _onGcd = false;
     private double _maxMana;
     public int OomTicks;
-    public Instance(Dictionary<string, Ability> abilities, Dictionary<string, double> stats, double time, Dictionary<string, OnHitUseStat> onHitUseStats,Dictionary<string,Ability>? procs)
+
+    public Instance(Dictionary<string, Ability> abilities, Dictionary<string, double> stats, double time,
+        Dictionary<string, OnHitUseStat> onHitUseStats, Dictionary<string, Ability>? procs)
     {
         _abilities = abilities;
         _normalStats = stats;
@@ -27,12 +29,15 @@ public class Instance
         _onHitUseStats = onHitUseStats;
         _proccedStats = stats;
         Procs = procs;
-        var wfProcs = procs.DeepClone();
-        wfProcs.Remove("wf");
-        procs["wf"].Procs = wfProcs;
-        foreach (var entry in procs)
+        procs["wf"].Procs = new Dictionary<string, Ability> {{ "seal", procs["seal"]}};
+    foreach (var entry in procs)
         {
             _abilities["melee"].Procs = procs;
+        }
+
+        if (procs["seal"].Name == "Seal of Blood")
+        {
+            onHitUseStats.Add("sobMana",new OnHitUseStat(1,stats["speed"],"mana",(1+stats["crit"]/100)*0.3*0.4*stats["dmg"])); // good enough
         }
     }
     public Dictionary<string,List<double>> Output()
@@ -67,7 +72,7 @@ public class Instance
         {
             try
             {
-                _abilities[entry].Cd = 0;
+                _abilities[entry]._currentCd = 0;
             }catch{}
         }
         _mana += procList.Item2;
@@ -87,6 +92,10 @@ public class Instance
                         {
                             _abilities["melee"].Cd = _proccedStats["speed"] / (_proccedStats["haste"]*0.01);
                             _abilities["melee"]._currentCd = (_abilities["melee"]._currentCd / _abilities["melee"].Cd) *(_proccedStats["speed"] / _proccedStats["haste"]);
+                        }
+                        else if (entry.Value.Stat == "mana")
+                        {   
+                            _mana += entry.Value.DoEffect(new Dictionary<string, double> {{"mana",0}})["mana"]; // kinda stupid
                         } 
                     }else if (!entry.Value.IsActive() & _activeProcs.Contains(entry.Key))
                     {
@@ -112,6 +121,7 @@ public class Instance
                         }
                     }
                 }
+
                 if (buttonPressed)
                 {
                     if (_mana >= _abilities[toPress].ManaCost && !_onGcd)
@@ -121,24 +131,9 @@ public class Instance
                             _mana -= _abilities[toPress].ManaCost;
                             if (_abilities[toPress].Name != "Melee")
                             {
-
+                                
                                 _fiveSecondTimer = 0;
                                 _onGcd = true;
-                                foreach (var entry in _abilities)
-                                {
-                                    if (entry.Value.Name == "Melee" &&
-                                        entry.Value._currentCd <= 0) // this is very cursed
-                                    {
-                                        if (_time >= 0)
-                                        {
-                                            var cdOffset = entry.Value._currentCd;
-                                            DoCritProc(entry.Value.do_dmg(_proccedStats));
-                                            entry.Value._currentCd = entry.Value.Cd + cdOffset;
-                                        }
-                                    }
-                                }
-
-
                             }
                         }
                     }
@@ -149,17 +144,26 @@ public class Instance
                         
                     }else if (_mana <= _abilities[toPress].ManaCost && !_onGcd)
                     {
-                        OomTicks += 1;
+                        OomTicks +=1;
                     }
                 }
+
                 _mana += _proccedStats["%manaPer3"] / (3 * 0.01)*_maxMana; // this acts continuously and can go over your max mana but that prob wouldnt happend unless you afk
                 _fiveSecondTimer += 0.01;
                 foreach (var entry in _abilities)
                 {
                     entry.Value.ReduceCd(0.01);
                 }
-                if (_fiveSecondTimer > 5)
+                foreach (var entry in Procs)
                 {
+                    entry.Value.ReduceCd(0.01);
+                }
+                foreach (var entry in _onHitUseStats)
+                {
+                    entry.Value.ReduceCd(0.01);
+                }
+                if (_fiveSecondTimer > 5)
+                { 
                     _mana += (5 * (0.001 + Math.Sqrt(_proccedStats["int"]) * _proccedStats["spirit"] * _baseRegen) * 0.6)*0.01; //not sure this is right also conituosuly updates mana not ever 5 sec 
                 }
                 if (_fiveSecondTimer >= 1.5)
