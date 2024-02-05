@@ -12,7 +12,8 @@ no sor
 assumes you have all buffs + enchants\
 assumes target has no armour\
 judge is on gcd and doesnt get rid off seal of command (this is probably barely even a dps difference)
-judgement of wisdom doesnt scale with haste
+judgement of wisdom doesnt scale with haste\
+seal of blood doesnt give mana back
 
 # To Use
 download latest release\
