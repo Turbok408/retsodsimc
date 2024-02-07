@@ -9,6 +9,7 @@ fixed seal of martyrdom giving back mana\
 updated sor dmg values
 
 # Current Issues:
+NEED TO UPDATE SEALS AND JUDGE CS DS PROCCING WINDFURY
 no spell power gear\
 no input validation\
 assumes you have all buffs + enchants\
