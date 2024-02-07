@@ -19,4 +19,4 @@ judgement of wisdom doesnt scale with haste\
 
 # To Use
 download latest release\
-updates or add another item set in saves.json\
+change item ids in saves.json or add another set after the default one
