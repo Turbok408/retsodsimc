@@ -306,7 +306,7 @@ namespace retsodsim
         
         static void Main(string[] args)
             {
-                Console.WriteLine("Time to sim?");
+                Console.WriteLine("Time to sim? (s)");
                 double time =Convert.ToDouble(Console.ReadLine()) ;
                 Console.WriteLine("Iterations?");
                 int iterations =Convert.ToInt32(Console.ReadLine()) ;

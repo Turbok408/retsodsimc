@@ -53,7 +53,7 @@
                 var hitRatio = DoCrit(stats);
                 AbilityDmgTotal += (hitRatio * _dmgFunc(stats) + Flatmod) * PercentMod;
                 _attacks += 1;
-                if (hitRatio > 0 && _procNames != null) // this assumes soc and wf cant proc of dodges?
+                if (hitRatio > 0 && Procs != null) // this assumes soc and wf cant proc of dodges?
                 {
                     foreach (var entry in Procs)
                     {   

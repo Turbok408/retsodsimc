@@ -29,12 +29,20 @@ public class Instance
         _onHitUseStats = onHitUseStats;
         _proccedStats = stats;
         Procs = procs;
-        procs["wf"].Procs = new Dictionary<string, Ability> {{ "seal", procs["seal"]}};
-    foreach (var entry in procs)
+        //procs["seal"].Procs = new Dictionary<string, Ability> {{ "seal", procs["wf"]}}; not sure about this yet
+        if (abilities.ContainsKey("ds"))
         {
-            _abilities["melee"].Procs = procs;
+            abilities["ds"].Procs = new Dictionary<string,Ability> {{"wf",procs["wf"]}};
         }
-
+        if (abilities.ContainsKey("cs"))
+        {
+            abilities["cs"].Procs = new Dictionary<string,Ability> {{"wf",procs["wf"]}};
+        }
+        abilities["judge"].Procs = new Dictionary<string,Ability> {{"wf",procs["wf"]}};
+        foreach (var entry in procs)
+        {
+                _abilities["melee"].Procs = procs;
+        }
         if (procs["seal"].Name == "Seal of Blood")
         {
             onHitUseStats.Add("sobMana",new OnHitUseStat(1,stats["speed"],"mana",(1+stats["crit"]/100)*0.3*0.4*stats["dmg"])); // good enough

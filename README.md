@@ -1,22 +1,20 @@
 # Added
-new runes\
-new items (except spellpower)\
-fixed base stats\
-updated new buffs\
-can now use mutiple item sets easily\
-fixed exocism cd reset rune\
-fixed seal of martyrdom giving back mana\
-updated sor dmg values
+mana\
+item procs\
+int and spirit\
+statweights sim\
+fixed random bugs\
+updated judge cs and ds to proc windfury
 
 # Current Issues:
-NEED TO UPDATE SEALS AND JUDGE CS DS PROCCING WINDFURY
-no spell power gear\
-no input validation\
 assumes you have all buffs + enchants\
 assumes target has no armour\
 judge is on gcd and doesnt get rid off seal of command (this is probably barely even a dps difference)
-judgement of wisdom doesnt scale with haste\
 
 # To Use
-download latest release\
-change item ids in saves.json or add another set after the default one
+download and extract latest release\
+easiest way to use is just add ids in saves.json in format:\
+"format":[
+    "head", "neck", "shoulder", "back", "chest", "wrist", "hands", "waist", "legs", "feet", "finger", "finger1", "trinket", "trinket1", "twohand"]\
+use id 0 if slot is empty and\
+ONLY THE FIRST SAVE LIST IT USED
