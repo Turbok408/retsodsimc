@@ -80,7 +80,7 @@
             var roll = GetRandom.Next(0, 100);
             var attackTable = new Dictionary<(double, double), double>()
             {
-                { (0, 5 - hit), 0 }
+                { (0,100), 0 }
             };
             switch (School) 
             {

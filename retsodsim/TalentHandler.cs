@@ -206,6 +206,7 @@ public class TalentHandler
         {
             abilities.Add("exo", new Ability(15,(stats)=> Ability.GetRandomDouble(225 +stats["sp"]*0.429,253 +stats["sp"]*0.429),2,"holy","Exocism",85));
         }
+        /* NO HEAD RUNES YET
         if (head == "xg")
         {
             cStats["hp_crit"] += 18;
@@ -228,8 +229,9 @@ public class TalentHandler
             {
                 abilities["holyWrath"].modCrit += cStats["crit"]+ retCritMods;
             }catch{}
-        }
-        if (wrist == "xj")
+        }*/
+        /* NO WRIST RUNES YET
+        if (wrist == "xj") 
         {
             try
             {
@@ -239,7 +241,7 @@ public class TalentHandler
         }else if (wrist == "xk")
         {
             // hammer of wrath 0 cd for 10% of time add holy wrath
-        }
+        }*/
         if (waist == "w9")
         {
             cStats["sp_hit"] = 17;

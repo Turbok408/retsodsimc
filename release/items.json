@@ -10525,6 +10525,16 @@
 		"agi": 5,
 		"sta": 2
 	},
+	"19597": {
+		"id": 19597,
+		"type": "Cloth",
+		"slot": "wrist",
+		"name": "Dryad's Wrist Bindings",
+		"spirit": 5,
+		"int": 6,
+		"sp": 16,
+		"sta": 6
+	},
 	"1306": {
 		"id": 1306,
 		"type": "Leather",
@@ -13123,6 +13133,15 @@
 		"name": "Brawler Gloves",
 		"stg": 8,
 		"sta": 7
+	},
+	"10019": {
+		"id": 10019,
+		"type": "Cloth",
+		"slot": "hands",
+		"name": "Dreamweave Gloves",
+		"int": 4,
+		"spirit": 7,
+		"sp": 18
 	},
 	"867": {
 		"id": 867,
@@ -28911,6 +28930,16 @@
 		},
 		"ap": 18
 	},
+	"211450": {
+		"id": 211450,
+		"type": "Miscellaneous",
+		"slot": "trinket1",
+		"name": "Invoker's Void Pearl",
+		"resist": {
+			"shadow": 10
+		},
+		"sp": 11
+	},
 	"2100": {
 		"id": 2100,
 		"type": "Guns",
@@ -38545,9 +38574,10 @@
 		"type": "Plate",
 		"slot": "head",
 		"name": "Tempered Interference-Negating Helmet",
-		"stg": 16,
-		"sta": 16,
+		"stg": 20,
+		"sta": 14,
 		"crit": 1,
+		"sp_crit": 1,
 		"proc": {
 			"stat": "haste",
 			"amount": 20,
@@ -38564,6 +38594,9 @@
 		"stg": 14,
 		"sta": 14,
 		"hit": 1,
+		"min_dmg": 3,
+		"max_dmg": 3,
+		"sp_hit": 1,
 		"proc": {
 			"stat": "haste",
 			"amount": 20,
@@ -38576,11 +38609,29 @@
 		"type": "Mail",
 		"slot": "head",
 		"name": "Rad-Resistant Scale Hood",
-		"agi": 10,
-		"stg": 11,
-		"sta": 11,
+		"sta": 10,
+		"hit": 1,
 		"sp_hit": 1,
+		"ap": 32,
 		"int": 10
+	},
+	"215114": {
+		"id": 215114,
+		"type": "Mail",
+		"slot": "head",
+		"name": "Glowing Hyperconductive Scale Coif",
+		"sta": 14,
+		"sp": 21,
+		"int": 15
+	},
+	"215167": {
+		"id": 215167,
+		"type": "Plate",
+		"slot": "head",
+		"name": "Reflective Truesilver Braincage",
+		"sta": 14,
+		"sp": 21,
+		"int": 15
 	},
 	"213280": {
 		"id": 213280,
@@ -38589,7 +38640,8 @@
 		"name": "Marksman's Scopevisor",
 		"agi": 9,
 		"sta": 13,
-		"crit": 1
+		"crit": 1,
+		"sp_crit": 1
 	},
 	"213417": {
 		"id": 213417,
@@ -38597,7 +38649,10 @@
 		"slot": "head",
 		"name": "Truesilver Filament Coif",
 		"sta": 8,
-		"crit": 1
+		"int": 12,
+		"crit": 1,
+		"sp_crit": 1,
+		"mp5": 5
 	},
 	"9243": {
 		"id": 9243,
@@ -38606,6 +38661,16 @@
 		"name": "Shriveled Heart",
 		"stg": -5,
 		"sta": 13
+	},
+	"213345": {
+		"id": 213345,
+		"type": "Miscellaneous",
+		"slot": "neck",
+		"name": "Piston Pendant",
+		"int": 8,
+		"spirit": 9,
+		"sp": 9,
+		"sta": 4
 	},
 	"12023|191": {
 		"id": "12023|191",
@@ -38630,7 +38695,8 @@
 		"name": "Gnomeregan Peace Officer's Torque",
 		"sta": 6,
 		"crit": 1,
-		"ap": 16
+		"ap": 16,
+		"sp_crit": 1
 	},
 	"7928": {
 		"id": 7928,
@@ -38805,7 +38871,9 @@
 		"type": "Mail",
 		"slot": "shoulder",
 		"name": "Lightning Rod Spaulders",
-		"hit": 1
+		"hit": 1,
+		"sp_hit": 1,
+		"int": 7
 	},
 	"213304": {
 		"id": 213304,
@@ -38880,7 +38948,8 @@
 		"type": "Cloth",
 		"slot": "back",
 		"name": "Blooddrenched Drape",
-		"crit": 1
+		"crit": 1,
+		"sp_crit": 1
 	},
 	"7477|1212": {
 		"id": "7477|1212",
@@ -39058,7 +39127,12 @@
 		"type": "Leather",
 		"slot": "chest",
 		"name": "Insulated Apron",
-		"hit": 1
+		"hit": 1,
+		"sp_hit": 1,
+		"sp": 19,
+		"int": 7,
+		"spirit": 9,
+		"set": "InsulatedSP"
 	},
 	"213313": {
 		"id": 213313,
@@ -39078,7 +39152,8 @@
 		"sta": 7,
 		"crit": 1,
 		"ap": 26,
-		"set": "Electromantic"
+		"set": "Electromantic",
+		"sp_crit": 1
 	},
 	"213316": {
 		"id": 213316,
@@ -39096,7 +39171,9 @@
 		"slot": "chest",
 		"name": "Shockforged Breastplate",
 		"sta": 3,
-		"crit": 1
+		"crit": 1,
+		"sp_crit": 1,
+		"set": "Shockforged"
 	},
 	"7534|1197": {
 		"id": "7534|1197",
@@ -39376,7 +39453,9 @@
 		"type": "Leather",
 		"slot": "wrist",
 		"name": "Ornate Dark Iron Bangles",
-		"hit": 1
+		"hit": 1,
+		"sp_hit": 1,
+		"sp": 9
 	},
 	"216701": {
 		"id": 216701,
@@ -39661,7 +39740,8 @@
 		"name": "Grubbis Grubby Gauntlets",
 		"stg": 9,
 		"sta": 5,
-		"crit": 1
+		"crit": 1,
+		"sp_crit": 1
 	},
 	"213319": {
 		"id": 213319,
@@ -39669,9 +39749,10 @@
 		"slot": "hands",
 		"name": "Machinist's Gloves",
 		"agi": 6,
-		"stg": 7,
+		"sta": 7,
 		"hit": 1,
-		"ap": 30
+		"ap": 30,
+		"sp_hit": 1
 	},
 	"213320": {
 		"id": 213320,
@@ -39681,7 +39762,8 @@
 		"agi": 6,
 		"sta": 7,
 		"sp_hit": 1,
-		"int": 10
+		"int": 10,
+		"hit": 1
 	},
 	"213391": {
 		"id": 213391,
@@ -39935,7 +40017,10 @@
 		"slot": "waist",
 		"name": "Electromagnetic Waistcord",
 		"sta": 5,
-		"hit": 1
+		"hit": 1,
+		"sp_hit": 1,
+		"int": 8,
+		"sp": 11
 	},
 	"213325": {
 		"id": 213325,
@@ -39944,7 +40029,8 @@
 		"name": "Darkvision Girdle",
 		"sta": 4,
 		"hit": 1,
-		"ap": 24
+		"ap": 24,
+		"sp_hit": 1
 	},
 	"213326": {
 		"id": 213326,
@@ -39972,6 +40058,8 @@
 		"sta": 9,
 		"crit": 1,
 		"hit": 1,
+		"sp_crit": 1,
+		"sp_hit": 1,
 		"proc": {
 			"stat": "crit",
 			"amount": 5,
@@ -40164,7 +40252,8 @@
 		"stg": 13,
 		"sta": 15,
 		"hit": 1,
-		"set": "H.A.Z.A.R.D."
+		"set": "H.A.Z.A.R.D.",
+		"sp_hit": 1
 	},
 	"213332": {
 		"id": 213332,
@@ -40175,7 +40264,8 @@
 		"stg": 13,
 		"sta": 14,
 		"hit": 1,
-		"set": "InsulatedAp"
+		"set": "InsulatedAp",
+		"sp_hit": 1
 	},
 	"213333": {
 		"id": 213333,
@@ -40185,7 +40275,9 @@
 		"sta": 10,
 		"hit": 1,
 		"ap": 28,
-		"set": "Electromantic"
+		"set": "Electromantic",
+		"sp_hit": 1,
+		"int": 10
 	},
 	"6423": {
 		"id": 6423,
@@ -40497,6 +40589,32 @@
 			"nature": 5
 		}
 	},
+	"213283": {
+		"id": 213283,
+		"type": "Miscellaneous",
+		"slot": "finger",
+		"name": "Hypercharged Gear of Conflagration",
+		"int": 4,
+		"sp": 11,
+		"mp5": 0,
+		"resist": {
+			"arcane": 5,
+			"nature": 5
+		}
+	},
+	"19524": {
+		"id": 19524,
+		"type": "Miscellaneous",
+		"slot": "finger",
+		"name": "Lorekeeper's Ring",
+		"stam": 5,
+		"sp": 9,
+		"mp5": 3
+	},
+	"215435": {
+		"id": 215435,
+		"name": "Libram of Benediction"
+	},
 	"21567": {
 		"id": 21567,
 		"type": "Miscellaneous",
@@ -40513,7 +40631,7 @@
 			"magic": true,
 			"dmg": 150,
 			"chance": 100,
-			"cd": 300
+			"cd": 3000
 		}
 	},
 	"213348": {
@@ -41013,7 +41131,10 @@
 		"speed": 3.3,
 		"mindmg": 102,
 		"maxdmg": 160,
-		"sta": 11
+		"sta": 11,
+		"int": 14,
+		"spirit": 15,
+		"sp": 35
 	},
 	"213354": {
 		"id": 213354,
@@ -41024,7 +41145,8 @@
 		"mindmg": 80,
 		"maxdmg": 121,
 		"sta": 4,
-		"hit": 1
+		"hit": 1,
+		"sp_hit": 1
 	},
 	"213408": {
 		"id": 213408,
@@ -41086,7 +41208,502 @@
 		"speed": 3.6,
 		"mindmg": 116,
 		"maxdmg": 175,
-		"stg": 14,
-		"sta": 144
+		"stg": 15,
+		"sta": 14
+	},
+	"209574": {
+		"id": 209574,
+		"type": "Relic",
+		"slot": "Ranged",
+		"name": "Discarded Tenets of the Silver Hand"
+	},
+	"217283": {
+		"id": 217283,
+		"name": "Golden Scale Shoulders",
+		"int": 0,
+		"spirit": 0,
+		"sp": 7
+	},
+	"213338": {
+		"id": 213338,
+		"name": "Electromantic Grounding Boots",
+		"int": 8,
+		"spirit": 0,
+		"sp": 8,
+		"set": "ElectromanticSP"
+	},
+	"217287": {
+		"id": 217287,
+		"name": "Greater Mystic Wand",
+		"int": 0,
+		"spirit": 0,
+		"sp": 5
+	},
+	"217294": {
+		"id": 217294,
+		"name": "Embalmed Shroud",
+		"int": 11,
+		"spirit": 0,
+		"sp": 8
+	},
+	"217257": {
+		"id": 217257,
+		"name": "Enchanter's Cowl",
+		"int": 10,
+		"spirit": 0,
+		"sp": 7
+	},
+	"217268": {
+		"id": 217268,
+		"name": "Turtle Scale Breastplate",
+		"int": 9,
+		"spirit": 0,
+		"sp": 11
+	},
+	"217261": {
+		"id": 217261,
+		"name": "Big Voodoo Robe",
+		"int": 14,
+		"spirit": 0,
+		"sp": 11
+	},
+	"213329": {
+		"id": 213329,
+		"name": "Hyperconductive Skirt",
+		"int": 12,
+		"spirit": 0,
+		"sp": 13
+	},
+	"217292": {
+		"id": 217292,
+		"name": "Deathmage Sash",
+		"int": 15,
+		"spirit": 0,
+		"sp": 7
+	},
+	"213300": {
+		"id": 213300,
+		"name": "Fighter Ace Gloves",
+		"int": 10,
+		"spirit": 0,
+		"sp": 9
+	},
+	"213334": {
+		"id": 213334,
+		"name": "Electromantic Gambeson",
+		"int": 7,
+		"spirit": 0,
+		"sp": 22,
+		"set": "ElectromanticSP"
+	},
+	"213336": {
+		"id": 213336,
+		"name": "Hyperconductive Walkers",
+		"int": 12,
+		"spirit": 0,
+		"sp": 9
+	},
+	"217299": {
+		"id": 217299,
+		"name": "Illusionary Rod",
+		"int": 15,
+		"spirit": 0,
+		"sp": 12
+	},
+	"213285": {
+		"id": 213285,
+		"name": "Lev's Oil-Stained Bindings",
+		"int": 4,
+		"spirit": 0,
+		"sp": 9
+	},
+	"217293": {
+		"id": 217293,
+		"name": "Silky Spider Cape",
+		"int": 0,
+		"spirit": 0,
+		"sp": 6
+	},
+	"217289": {
+		"id": 217289,
+		"name": "Deathchill Armor",
+		"int": 20,
+		"spirit": 0,
+		"sp": 11
+	},
+	"217250": {
+		"id": 217250,
+		"name": "Crimson Silk Shoulders",
+		"int": 8,
+		"spirit": 0,
+		"sp": 8
+	},
+	"216484": {
+		"id": 216484,
+		"name": "Shockforged Battleboots",
+		"int": 11,
+		"spirit": 0,
+		"sp": 13,
+		"set": "Shockforged"
+	},
+	"213321": {
+		"id": 213321,
+		"name": "Volatile Concoction Belt",
+		"int": 0,
+		"spirit": 0,
+		"sp": 12,
+		"sp_hit": 1,
+		"hit": 1
+	},
+	"215378": {
+		"id": 215378,
+		"name": "Irradiated Boots",
+		"int": 7,
+		"spirit": 8,
+		"sp": 11,
+		"sp_hit": 1,
+		"hit": 1,
+		"stg": -5,
+		"set": "Irradiated"
+	},
+	"213306": {
+		"id": 213306,
+		"name": "Ingenuity's Cover",
+		"int": 9,
+		"spirit": 0,
+		"sp": 9
+	},
+	"217295": {
+		"id": 217295,
+		"name": "Necrotic Wand",
+		"int": 0,
+		"spirit": 0,
+		"sp": 7
+	},
+	"213315": {
+		"id": 213315,
+		"name": "Electromantic Chainshirt",
+		"int": 13,
+		"spirit": 0,
+		"sp": 20,
+		"set": "ElectromanticSP"
+	},
+	"216486": {
+		"id": 216486,
+		"name": "Shockforged Legplates",
+		"int": 12,
+		"spirit": 0,
+		"sp": 22,
+		"set": "Shockforged"
+	},
+	"215379": {
+		"id": 215379,
+		"name": "Irradiated Trousers",
+		"int": 10,
+		"spirit": 0,
+		"sp": 16,
+		"set": "Irradiated"
+	},
+	"217288": {
+		"id": 217288,
+		"name": "Robes of the Lich",
+		"int": 0,
+		"spirit": 0,
+		"sp": 12
+	},
+	"217296": {
+		"id": 217296,
+		"name": "Ghostshard Talisman",
+		"int": 0,
+		"spirit": 0,
+		"sp": 5
+	},
+	"217259": {
+		"id": 217259,
+		"name": "Big Voodoo Mask",
+		"int": 14,
+		"spirit": 0,
+		"sp": 11
+	},
+	"217300": {
+		"id": 217300,
+		"name": "Whitemane's Chapeau",
+		"int": 14,
+		"spirit": 0,
+		"sp": 11
+	},
+	"213347": {
+		"id": 213347,
+		"name": "Miniaturized Combustion Chamber",
+		"int": 6,
+		"spirit": 0,
+		"sp": 12
+	},
+	"217252": {
+		"id": 217252,
+		"name": "Long Silken Cloak",
+		"int": 5,
+		"spirit": 0,
+		"sp": 7
+	},
+	"213542": {
+		"id": 213542,
+		"name": "The Necro-Gnomicon",
+		"int": 2,
+		"spirit": 0,
+		"sp": 14
+	},
+	"213559": {
+		"id": 213559,
+		"name": "Mechanostrider Gear Shifter",
+		"int": 0,
+		"spirit": 0,
+		"sp": 9
+	},
+	"213351": {
+		"id": 213351,
+		"name": "Irradiated Tower Shield",
+		"int": 7,
+		"spirit": 0,
+		"sp": 12
+	},
+	"213281": {
+		"id": 213281,
+		"name": "Electromagnetic Hyperflux Reactivator",
+		"int": 15,
+		"spirit": 0,
+		"sp": 16
+	},
+	"216620": {
+		"id": 216620,
+		"name": "Bloodrot Cloak",
+		"int": 6,
+		"spirit": 0,
+		"sp": 11
+	},
+	"213311": {
+		"id": 213311,
+		"name": "Hyperconductive Robe",
+		"int": 11,
+		"spirit": 0,
+		"sp": 18
+	},
+	"215377": {
+		"id": 215377,
+		"name": "Irradiated Robe",
+		"int": 7,
+		"spirit": 0,
+		"sp": 23,
+		"sp_crit": 1,
+		"crit": 1,
+		"set": "Irradiated"
+	},
+	"213301": {
+		"id": 213301,
+		"name": "Synthetic Mantle",
+		"int": 9,
+		"spirit": 0,
+		"sp": 12
+	},
+	"217497": {
+		"id": 217497,
+		"name": "Narpas Sword",
+		"int": 0,
+		"spirit": 0,
+		"sp": 15,
+		"min_dmg": 40,
+		"max_dmg": 75,
+		"speed": 2
+	},
+	"217297": {
+		"id": 217297,
+		"name": "Robe of Doan",
+		"int": 0,
+		"spirit": 0,
+		"sp": 5
+	},
+	"217273": {
+		"id": 217273,
+		"name": "Golden Scale Gauntlets",
+		"int": 0,
+		"spirit": 0,
+		"sp": 5
+	},
+	"217253": {
+		"id": 217253,
+		"name": "Boots of the Enchanter",
+		"int": 0,
+		"spirit": 0,
+		"sp": 6
+	},
+	"217291": {
+		"id": 217291,
+		"name": "Mordresh's Lifeless Skull",
+		"int": 0,
+		"spirit": 0,
+		"sp": 6
+	},
+	"217265": {
+		"id": 217265,
+		"name": "Guardian Belt",
+		"int": 0,
+		"spirit": 0,
+		"sp": 8
+	},
+	"217246": {
+		"id": 217246,
+		"name": "Black Mageweave Vest",
+		"int": 0,
+		"spirit": 0,
+		"sp": 13
+	},
+	"217267": {
+		"id": 217267,
+		"name": "Guardian Pants",
+		"int": 0,
+		"spirit": 0,
+		"sp": 9
+	},
+	"217285": {
+		"id": 217285,
+		"name": "Golden Scale Leggings",
+		"int": 0,
+		"spirit": 0,
+		"sp": 6
+	},
+	"217247": {
+		"id": 217247,
+		"name": "Black Mageweave Leggings",
+		"int": 0,
+		"spirit": 0,
+		"sp": 9
+	},
+	"217263": {
+		"id": 217263,
+		"name": "Guardian Leather Bracers",
+		"int": 0,
+		"spirit": 0,
+		"sp": 7
+	},
+	"217270": {
+		"id": 217270,
+		"name": "Turtle Scale Gloves",
+		"int": 6,
+		"spirit": 0,
+		"sp": 7
+	},
+	"217279": {
+		"id": 217279,
+		"name": "Golden Scale Coif",
+		"int": 0,
+		"spirit": 0,
+		"sp": 12
+	},
+	"213287": {
+		"id": 213287,
+		"name": "Electrocutioner Hexnut",
+		"int": 0,
+		"spirit": 0,
+		"sp": 8
+	},
+	"217277": {
+		"id": 217277,
+		"name": "Golden Scale Cuirass",
+		"int": 0,
+		"spirit": 0,
+		"sp": 7
+	},
+	"213290": {
+		"id": 213290,
+		"name": "Acidic Waders",
+		"int": 10,
+		"spirit": 0,
+		"sp": 11
+	},
+	"217275": {
+		"id": 217275,
+		"name": "Golden Scale Boots",
+		"int": 0,
+		"spirit": 0,
+		"sp": 9
+	},
+	"217255": {
+		"id": 217255,
+		"name": "Crimson Silk Belt",
+		"int": 7,
+		"spirit": 0,
+		"sp": 7
+	},
+	"213298": {
+		"id": 213298,
+		"name": "Mechbuilder's Overalls",
+		"int": 12,
+		"spirit": 0,
+		"sp": 0
+	},
+	"217006": {
+		"id": 217006,
+		"name": "Mechanic's Pipehammer",
+		"int": 6,
+		"spirit": 0,
+		"sp": 0
+	},
+	"217298": {
+		"id": 217298,
+		"name": "Mantle of Doan",
+		"int": 8,
+		"spirit": 0,
+		"sp": 0
+	},
+	"217245": {
+		"id": 217245,
+		"name": "Crimson Silk Robe",
+		"int": 15,
+		"spirit": 0,
+		"sp": 0
+	},
+	"216680": {
+		"id": 216680,
+		"name": "Shilly Mittens",
+		"int": 12,
+		"spirit": 0,
+		"sp": 0
+	},
+	"217005": {
+		"id": 217005,
+		"name": "Repairman's Cape",
+		"int": 3,
+		"spirit": 0,
+		"sp": 0
+	},
+	"213323": {
+		"id": 213323,
+		"name": "Cord of Deep Earth",
+		"int": 8,
+		"spirit": 0,
+		"sp": 0
+	},
+	"213342": {
+		"id": 213342,
+		"name": "Insulated Galoshes",
+		"int": 9,
+		"spirit": 0,
+		"sp": 16,
+		"set": "InsulatedSP"
+	},
+	"217304": {
+		"id": 217304,
+		"name": "Revelosh's Gloves",
+		"int": 12,
+		"spirit": 0,
+		"sp": 0
+	},
+	"213331": {
+		"id": 213331,
+		"name": "Insulated Leggings",
+		"int": 10,
+		"spirit": 0,
+		"sp": 16,
+		"set": "InsulatedSP"
 	}
 }

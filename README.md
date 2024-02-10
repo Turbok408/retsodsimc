@@ -1,5 +1,6 @@
 # Added
-updated judge cs and ds to proc windfury
+updated judge cs and ds to proc windfury\
+added most spell power items\
 
 # Current Issues:
 assumes you have all buffs + enchants\

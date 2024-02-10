@@ -23,7 +23,7 @@ namespace retsodsim
                 { "hit", 0 },
                 { "sp", 42},
                 { "sp_hit", 3 },
-                { "sp_crit", 3.8+3 +4}, // no idea where 3.8 base crit comes from
+                { "sp_crit", 4.71+3 +4}, // no idea where 3.8 base crit comes from
                 { "int", 49 +15+8}, 
                 {"mana",987 + 800}, // this assume one greater mana potion
                 {"spirit",56+8}, 
@@ -31,7 +31,8 @@ namespace retsodsim
                 {"hp_hit",0},
                 {"hp_crit",0},
                 {"%manaPer3",0},
-                {"skill", 0} // YOU ARE HUMAN WITH SWORD
+                {"mp5",20},
+                {"skill", 0} 
             };
             if (statModifiers != null)
             {
@@ -147,7 +148,18 @@ namespace retsodsim
                     }catch{}
                 }
             }
-            foreach (var entry in sets)
+            if (statModifiers != null)
+            {
+                foreach (var entry in statModifiers)
+                {
+                    stats[entry.Key] += entry.Value;
+                }
+            }
+            stats["agi"] *= 1.1; //lion buff
+            stats["int"] *= 1.1;
+            stats["crit"] += stats["agi"] / 20 ;// only works as no talents can change agi
+            var statAbilitys = TalentHandler.return_ability_stats(stats, talents);
+            foreach (var entry in sets) // if theses every change base stats int or str needs some chaning
             {
                 switch (entry.Key)
                 {
@@ -178,19 +190,46 @@ namespace retsodsim
                             }
                         }
                         break;
+                    case "InsulatedSP":
+                        if (entry.Value >= 2)
+                        {
+                            stats["sp"] += 16;
+                        }
+                        break;
+                    case "ElectromanticSp":
+                        if (entry.Value >= 2)
+                        {
+                            stats["sp"] += 12;
+                        }
+                        break;
+                    case "Irradiated":
+                        if (entry.Value >= 2)
+                        {
+                            stats["stam"] -= 5;
+                            stats["sp_crit"] += 1;
+                            stats["crit"] += 1;
+                            if (entry.Value == 3)
+                            {
+                                stats["sp"] += 11;
+                            }
+                        }
+                        break;
+                    case "Shockforged":
+                        if (entry.Value >= 2)
+                        {
+                            stats["sp"] += 12;
+                            if (entry.Value == 3)
+                            {
+                                if (statAbilitys.Item2.ContainsKey("holyShock"))
+                                {
+                                    statAbilitys.Item2["holyShock"].modCrit += 2;
+                                }
+                            }
+                        }
+                        break;
                 }
             }
-            if (statModifiers != null)
-            {
-                foreach (var entry in statModifiers)
-                {
-                    stats[entry.Key] += entry.Value;
-                }
-            }
-            stats["agi"] *= 1.1; //lion buff
-            stats["crit"] += stats["agi"] / 20 ;// only works as no talents can change agi
-            var statAbilitys = TalentHandler.return_ability_stats(stats, talents);
-            stats = statAbilitys.Item1;
+            stats = statAbilitys.Item1; 
             var abilitys = statAbilitys.Item2;
             if (itemsIdsDict[Program.choice].Contains("215435"))
             {
@@ -220,6 +259,7 @@ namespace retsodsim
         private static Dictionary<string,List<double>> RunSim(int iterations, double time,Dictionary<string,double> stats,Dictionary<string,Ability> abilities,Dictionary<string,OnHitUseStat> onHitUseStat,Dictionary<string,Ability> procs)
         {
             stats["mana"] += (33 * time / stats["speed"])/2; // judgement of wisdom in stupid way
+            stats["mana"] += stats["mp5"] / 5 * time; // add mp5 regen
             var instArray = new Instance[iterations];
                 var tasks = new List<Task>();
                 for (int i = 0; i < iterations; i++) 
@@ -329,14 +369,17 @@ namespace retsodsim
             }
         }
     }
-/* wf ap?
+/* wf ap - no ap procs this phase will fix next fresh or smth
  seal of blood can proc every same as melee + can dodge etc?
  55550100501051--50205051_166wb86sp
  --55230051100315_156p266wa76sn86sk96xka6nx all
  1--55230051000315_156p266wa76sn86spa6nx predicted p2?
  1--55230051000315_156p366wa76sn86spa6nx sob
- judgement of wisdom doesnt scale with haste
+ 55350100501051_156p366wb76sn86spa6nx shockadin aow
+ 55350100501051_156p266wb76sn86spa6nx shockadin sor
+ judgement of wisdom doesnt scale with haste-very minor
  ppm on procs dont work
+ cloth pvp set
  */
 
 
