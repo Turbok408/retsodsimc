@@ -4,8 +4,7 @@ added most spell power items\
 
 # Current Issues:
 assumes you have all buffs + enchants\
-assumes target has no armour\
-no cloth or sp items in database
+assumes target has no armour
 
 # To Use
 download and extract latest release\
