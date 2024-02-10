@@ -242,6 +242,7 @@ public class TalentHandler
         {
             // hammer of wrath 0 cd for 10% of time add holy wrath
         }*/
+        double holyShockMod = 0;
         if (waist == "w9")
         {
             cStats["sp_hit"] = 17;
@@ -253,8 +254,9 @@ public class TalentHandler
         {
             try
             {
-                abilities["holyShock"].PercentMod += 0.2;
+                holyShockMod += 0.2;
                 abilities["holyShock"].OnCritProc = (["holyShock", "exo"], abilities["holyShock"].ManaCost);
+                abilities["exo"].Prio = -100;
             }catch{}
             // crits with holy shock -100% cd on shock exo refund holy shock mana
         }
@@ -288,6 +290,7 @@ public class TalentHandler
         {
             abilities[entry.Key].Cd += entry.Value;
         }
+        
         foreach (KeyValuePair<string,Ability> entry in abilities)
         {   
             entry.Value.Flatmod = dmgChanges[entry.Value.DmgType].Item1;
@@ -297,6 +300,11 @@ public class TalentHandler
         {   
             entry.Value.Flatmod = dmgChanges[entry.Value.DmgType].Item1;
             entry.Value.PercentMod = dmgChanges[entry.Value.DmgType].Item2;
+        }
+        
+        if (abilities.ContainsKey("holyShock"))
+        {
+            abilities["holyShock"].PercentMod += holyShockMod;
         }
         return (resStats, abilities,procs); 
     }
