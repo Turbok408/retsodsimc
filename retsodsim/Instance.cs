@@ -17,7 +17,7 @@ public class Instance
     private bool _onGcd = false;
     private double _maxMana;
     public int OomTicks;
-
+    
     public Instance(Dictionary<string, Ability> abilities, Dictionary<string, double> stats, double time,
         Dictionary<string, OnHitUseStat> onHitUseStats, Dictionary<string, Ability>? procs)
     {

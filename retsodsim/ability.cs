@@ -2,11 +2,12 @@
 {
     public class Ability
     {
+        public static double Armour = 1-0.3547 ;
          // this is a very stupid way of doing procs when they add procs with cds this should be changed
         public string School { get; }
         public  Dictionary<string,Ability>? Procs { get; set; }
         public double PercentMod { get; set; } = 1;
-        public double Prio { get; }
+        public double Prio { get; set; }
         public string Name { get; }
         public double Cd { get; set; }
         public double Flatmod { get; set; }
@@ -51,8 +52,16 @@
             {
                 _currentCd = Cd;
                 var hitRatio = DoCrit(stats);
-                AbilityDmgTotal += (hitRatio * _dmgFunc(stats) + Flatmod) * PercentMod;
+                
                 _attacks += 1;
+                if (DmgType == "aa" | DmgType == "physical")
+                {
+                    AbilityDmgTotal += ((hitRatio * _dmgFunc(stats) + Flatmod) * (PercentMod))*Armour;
+                }
+                else
+                {
+                    AbilityDmgTotal += (hitRatio * _dmgFunc(stats) + Flatmod) * (PercentMod);
+                }
                 if (hitRatio > 0 && Procs != null) // this assumes soc and wf cant proc of dodges?
                 {
                     foreach (var entry in Procs)
@@ -207,15 +216,5 @@
         }
     }
 }
-/* add auras (done except ap procs on wf?)
- options for buffs(why sim without buffs?)
- --50230001_116xg56p266wb76sn86sp96xka6nx
- seal of blood mana back
- no sp items in db?
- add new rune affects or effects?
- add armour
- add errors
- add benidictiion
- 
- */
+
 

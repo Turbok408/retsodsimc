@@ -30,7 +30,7 @@ public class TalentHandler
         string talents = talentsRunes.Split("_")[0];
         var procs = new Dictionary<string, Ability>
         {
-            { "seal", new Ability(0,(stats)=>(1.2*(2112*1.2*1.03*stats["speed"]/100))/2+0.1*stats["sp"],100,"holy","Seal of Righteousness",0) } //thinks this is correct
+            { "seal", new Ability(0,(stats)=>1.2*(2112*1.2*1.03*stats["speed"]/100)/2+0.1*stats["sp"],100,"holy","Seal of Righteousness",0) } //thinks this is correct
         };
         var abilities = new Dictionary<string, Ability>()
         {

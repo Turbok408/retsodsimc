@@ -5,6 +5,41 @@ namespace retsodsim
 {
     class Program
     {
+        public static void GetBisGear(string talents)
+        {
+            string jsonFilePath = Directory.GetCurrentDirectory()+"\\items.json";
+            string json = File.ReadAllText(jsonFilePath);
+            var  allIds = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string,dynamic>>>(json);
+            Console.WriteLine(allIds["213353"]);
+            Dictionary<string, List<string>> itemsByType = new Dictionary<string, List<string>> { };
+            foreach (var entry in allIds)
+            {
+                Console.WriteLine(entry.Key);
+                if (entry.Value.ContainsKey("slot"))
+                {
+                    if (!itemsByType.ContainsKey(entry.Value["slot"]))
+                    {
+                        itemsByType.Add(entry.Value["slot"],new List<string>{entry.Key});
+                    }
+                    else
+                    {
+                        itemsByType[entry.Value["slot"]].Add(entry.Value["id"]);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("entry"+"Key");
+                }
+                
+            }
+            var combos = 1;
+            foreach (var entry in allIds)
+            {
+                combos *= entry.Value.Count;
+            }
+            Console.WriteLine(combos);
+        }
+        
         private static string choice = "";
         static (Dictionary<string,double>,Dictionary<string,Ability>,Dictionary<string,OnHitUseStat>,Dictionary<string,Ability>) GetStats(string talents,string race, Dictionary<string,double>? statModifiers = null)
         {
@@ -354,16 +389,25 @@ namespace retsodsim
                 string talents = Console.ReadLine();
                 Console.WriteLine("Input race");
                 string race = Console.ReadLine().ToLower();
+                Console.WriteLine("Sim Thermaplugg (y/n)");
+                if (Console.ReadLine().ToLower() == "y")
+                {
+                    Ability.Armour = 1-0.426;
+                }
                 var statAbilites = GetStats(talents,race);
-                Console.WriteLine("press 1 for sim, 2 for stat weights (this will do iterations*11 iterations)");
+                Console.WriteLine("press 1 for sim, 2 for stat weights (this will do iterations*11 iterations),3 for bis gear sim");
                 if (Console.ReadLine() == "1")
                 {
                     var results = RunSim(iterations, time, statAbilites.Item1, statAbilites.Item2, statAbilites.Item3,statAbilites.Item4);
                     OutputDetailed(results,time,iterations);
                 }
-                else
+                else if(Console.ReadLine() == "2")
                 {
                     StatWeights(iterations,time,talents,race);
+                }
+                else
+                {
+                    GetBisGear(talents);
                 }
                 Console.ReadLine();
             }
