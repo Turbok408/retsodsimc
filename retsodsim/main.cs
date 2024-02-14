@@ -192,6 +192,8 @@ namespace retsodsim
             }
             stats["agi"] *= 1.1; //lion buff
             stats["int"] *= 1.1;
+            
+            
             stats["crit"] += stats["agi"] / 20 ;// only works as no talents can change agi
             var statAbilitys = TalentHandler.return_ability_stats(stats, talents);
             foreach (var entry in sets) // if theses every change base stats int or str needs some chaning

@@ -40735,6 +40735,17 @@
 		"stg": 8,
 		"sta": 5
 	},
+	"209560":{
+		"id": 209560,
+		"type": "Mace",
+		"slot": "mainhand",
+		"name": "Hammer of Righteous Judgement",
+		"speed": 1.3,
+		"mindmg": 17,
+		"maxdmg": 32,
+		"stg": 3,
+		"sta": 2
+	},
 	"7943": {
 		"id": 7943,
 		"type": "Sword",
