@@ -1,10 +1,9 @@
 # Added
-updated judge cs and ds to proc windfury\
-added most spell power items\
-added armour values
+correctly normalised som\
 
 # Current Issues:
-assumes you have all buffs + enchants
+assumes you have all buffs + enchants\
+no dismantle enchant
 
 # To Use
 download and extract latest release\

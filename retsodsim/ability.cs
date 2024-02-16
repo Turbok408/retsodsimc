@@ -85,7 +85,7 @@
                 double hit = stats["hit"];
             double crit = stats["crit"];
             float glanceChance = 10 + 2 * 3;
-            double ratingDif = 15-stats["skill"];
+            double ratingDif = 10-stats["skill"];
             var roll = GetRandom.Next(0, 100);
             var attackTable = new Dictionary<(double, double), double>()
             {
@@ -122,12 +122,12 @@
                     };
                     break;
                 case "holy":
-                    if (GetRandomDouble(0, 100) >= 17 - stats["hp_hit"])
+                    if (GetRandomDouble(0, 100) >= 6 - stats["hp_hit"])
                     {
                         attackTable = new Dictionary<(double, double), double>()
                         {
-                            { (0, stats["hp_crit"]+modCrit), 2 },
-                            { (stats["hp_crit"], 100), 1 }
+                            { (0, stats["hp_crit"]+modCrit), 2*0.9 },
+                            { (stats["hp_crit"]+modCrit, 100), 1*0.9 }//10% avg resistance
                         };
                     }
                     else
@@ -142,8 +142,15 @@
             foreach (KeyValuePair<(double, double), double> entry in attackTable)
             {
                 if (entry.Key.Item1 < roll && roll <= entry.Key.Item2)
-                {   
-                    return entry.Value;
+                {
+                    if (DmgType == "dmgType" && School != DmgType)
+                    {
+                        return entry.Value * 0.9;
+                    }
+                    else
+                    {
+                        return entry.Value; 
+                    }
                 }
             }
             return 0;

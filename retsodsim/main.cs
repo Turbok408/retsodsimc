@@ -67,7 +67,8 @@ namespace retsodsim
                 {"hp_crit",0},
                 {"%manaPer3",0},
                 {"mp5",20},
-                {"skill", 0} 
+                {"skill", 0} ,
+                {"baseSpeed",0}
             };
             if (statModifiers != null)
             {
@@ -192,8 +193,6 @@ namespace retsodsim
             }
             stats["agi"] *= 1.1; //lion buff
             stats["int"] *= 1.1;
-            
-            
             stats["crit"] += stats["agi"] / 20 ;// only works as no talents can change agi
             var statAbilitys = TalentHandler.return_ability_stats(stats, talents);
             foreach (var entry in sets) // if theses every change base stats int or str needs some chaning
@@ -291,6 +290,7 @@ namespace retsodsim
                 stats["spirit"] *= 1.05;
             }
             //abilitys.Concat(dmgProcs);
+            stats["baseSpeed"] = stats["speed"];
             return (stats, abilitys,onUse,dmgProcs);
         }
         private static Dictionary<string,List<double>> RunSim(int iterations, double time,Dictionary<string,double> stats,Dictionary<string,Ability> abilities,Dictionary<string,OnHitUseStat> onHitUseStat,Dictionary<string,Ability> procs)
@@ -398,19 +398,21 @@ namespace retsodsim
                 }
                 var statAbilites = GetStats(talents,race);
                 Console.WriteLine("press 1 for sim, 2 for stat weights (this will do iterations*11 iterations),3 for bis gear sim");
-                if (Console.ReadLine() == "1")
+                var simChoice = Console.ReadLine();
+                if (simChoice == "1")
                 {
                     var results = RunSim(iterations, time, statAbilites.Item1, statAbilites.Item2, statAbilites.Item3,statAbilites.Item4);
                     OutputDetailed(results,time,iterations);
                 }
-                else if(Console.ReadLine() == "2")
+                if(simChoice == "2")
                 {
                     StatWeights(iterations,time,talents,race);
                 }
+                /*
                 else
                 {
                     GetBisGear(talents);
-                }
+                }*/
                 Console.ReadLine();
             }
         }

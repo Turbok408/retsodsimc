@@ -1,0 +1,2 @@
+C:\Users\edwar\RiderProjects\retsodsim\retsodsim\bin\Release\net8.0\win-x64\publish\retsodsim.pdb
+C:\Users\edwar\RiderProjects\retsodsim\retsodsim\bin\Release\net8.0\win-x64\publish\retsodsim.exe

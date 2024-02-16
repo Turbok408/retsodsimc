@@ -1,0 +1,2798 @@
+{
+	"8142": {
+		"id": 8142,
+		"type": "Plate",
+		"slot": "head",
+		"name": "Chromite Barbute",
+		"agi": 12,
+		"str": 12
+	},
+	"8161": {
+		"id": 8161,
+		"type": "Plate",
+		"slot": "head",
+		"name": "Jouster's Visor",
+		"agi": 10,
+		"sta": 11
+	},
+	"8214|702": {
+		"id": "8214|702",
+		"type": "Leather",
+		"slot": "head",
+		"name": "Wild Leather Helmet of the Tiger",
+		"agi": 12,
+		"str": 12,
+		"rand": 702
+	},
+	"8214|1212": {
+		"id": "8214|1212",
+		"type": "Leather",
+		"slot": "head",
+		"name": "Wild Leather Helmet of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"9290|699": {
+		"id": "9290|699",
+		"type": "Plate",
+		"slot": "head",
+		"name": "Field Plate Helmet of the Tiger",
+		"agi": 11,
+		"str": 11,
+		"rand": 699
+	},
+	"9290|1209": {
+		"id": "9290|1209",
+		"type": "Plate",
+		"slot": "head",
+		"name": "Field Plate Helmet of the Bear",
+		"sta": 11,
+		"str": 11,
+		"rand": 1209
+	},
+	"9394": {
+		"id": 9394,
+		"type": "Plate",
+		"slot": "head",
+		"name": "Horned Viking Helmet",
+		"agi": 10,
+		"sta": 15
+	},
+	"9664": {
+		"id": 9664,
+		"type": "Plate",
+		"slot": "head",
+		"name": "Sentinel's Guard",
+		"agi": 9,
+		"sta": 12
+	},
+	"9921|702": {
+		"id": "9921|702",
+		"type": "Leather",
+		"slot": "head",
+		"name": "Tracker's Headband of the Tiger",
+		"agi": 12,
+		"str": 12,
+		"rand": 702
+	},
+	"9921|1212": {
+		"id": "9921|1212",
+		"type": "Leather",
+		"slot": "head",
+		"name": "Tracker's Headband of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"9969|702": {
+		"id": "9969|702",
+		"type": "Plate",
+		"slot": "head",
+		"name": "Embossed Plate Helmet of the Tiger",
+		"agi": 12,
+		"str": 12,
+		"rand": 702
+	},
+	"9969|1212": {
+		"id": "9969|1212",
+		"type": "Plate",
+		"slot": "head",
+		"name": "Embossed Plate Helmet of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"10741": {
+		"id": 10741,
+		"type": "Leather",
+		"slot": "head",
+		"name": "Lordrec Helmet",
+		"agi": 16,
+		"sta": 10
+	},
+	"10743": {
+		"id": 10743,
+		"type": "Mail",
+		"slot": "head",
+		"name": "Drakefire Headguard",
+		"str": 5
+	},
+	"10749": {
+		"id": 10749,
+		"type": "Plate",
+		"slot": "head",
+		"name": "Avenguard Helm",
+		"agi": 5,
+		"sta": 25
+	},
+	"10763": {
+		"id": 10763,
+		"type": "Plate",
+		"slot": "head",
+		"name": "Icemetal Barbute",
+		"str": 15,
+		"sta": 10,
+		"resist": {
+			"frost": 10
+		}
+	},
+	"14604": {
+		"id": 14604,
+		"type": "Leather",
+		"slot": "head",
+		"name": "Warden's Wizard Hat",
+		"agi": 13,
+		"sta": 11
+	},
+	"14899|699": {
+		"id": "14899|699",
+		"type": "Plate",
+		"slot": "head",
+		"name": "Saltstone Helm of the Tiger",
+		"agi": 11,
+		"str": 11,
+		"rand": 699
+	},
+	"14899|1209": {
+		"id": "14899|1209",
+		"type": "Plate",
+		"slot": "head",
+		"name": "Saltstone Helm of the Bear",
+		"sta": 11,
+		"str": 11,
+		"rand": 1209
+	},
+	"14944|702": {
+		"id": "14944|702",
+		"type": "Plate",
+		"slot": "head",
+		"name": "Warbringer's Crown of the Tiger",
+		"agi": 12,
+		"str": 12,
+		"rand": 702
+	},
+	"14944|1212": {
+		"id": "14944|1212",
+		"type": "Plate",
+		"slot": "head",
+		"name": "Warbringer's Crown of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"15602|702": {
+		"id": "15602|702",
+		"type": "Mail",
+		"slot": "head",
+		"name": "Ancient Crown of the Tiger",
+		"agi": 12,
+		"str": 12,
+		"rand": 702
+	},
+	"15602|1212": {
+		"id": "15602|1212",
+		"type": "Mail",
+		"slot": "head",
+		"name": "Ancient Crown of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"20640": {
+		"id": 20640,
+		"type": "Plate",
+		"slot": "head",
+		"name": "Southsea Head Bucket",
+		"str": 6,
+		"sta": 15
+	},
+	"215161": {
+		"id": 215161,
+		"type": "Plate",
+		"slot": "head",
+		"name": "Tempered Interference-Negating Helmet",
+		"str": 20,
+		"sta": 16,
+		"crit": 1,
+		"proc": {
+			"stat": "haste",
+			"amount": 50,
+			"duration": 30,
+			"cd": 180
+		}
+	},
+	"215166": {
+		"id": 215166,
+		"type": "Leather",
+		"slot": "head",
+		"name": "Glowing Gneuro-Linked Cowl",
+		"agi": 14,
+		"str": 14,
+		"sta": 14,
+		"hit": 1,
+		"sp_hit": 1,
+		"proc": {
+			"stat": "haste",
+			"amount": 20,
+			"duration": 10,
+			"cd": 600
+		}
+	},
+	"215382": {
+		"id": 215382,
+		"type": "Mail",
+		"slot": "head",
+		"name": "Rad-Resistant Scale Hood",
+		"agi": 10,
+		"str": 11,
+		"sta": 11,
+		"sp_hit": 1,
+		"int": 10
+	},
+	"213280": {
+		"id": 213280,
+		"type": "Mail",
+		"slot": "head",
+		"name": "Marksman's Scopevisor",
+		"agi": 9,
+		"sta": 13,
+		"crit": 1,
+		"sp_crit": 1
+	},
+	"213417": {
+		"id": 213417,
+		"type": "Plate",
+		"slot": "head",
+		"name": "Truesilver Filament Coif",
+		"sta": 8,
+		"crit": 1,
+		"sp_crit": 1
+	},
+	"9243": {
+		"id": 9243,
+		"type": "Miscellaneous",
+		"slot": "neck",
+		"name": "Shriveled Heart",
+		"str": -5,
+		"sta": 13
+	},
+	"12023|191": {
+		"id": "12023|191",
+		"type": "Miscellaneous",
+		"slot": "neck",
+		"name": "Tellurium Necklace of Strength",
+		"str": 10,
+		"rand": 191
+	},
+	"213343": {
+		"id": 213343,
+		"type": "Miscellaneous",
+		"slot": "neck",
+		"name": "Justice Badge",
+		"str": 6,
+		"sta": 7
+	},
+	"213344": {
+		"id": 213344,
+		"type": "Miscellaneous",
+		"slot": "neck",
+		"name": "Gnomeregan Peace Officer's Torque",
+		"sta": 6,
+		"crit": 1,
+		"ap": 16,
+		"sp_crit": 1
+	},
+	"7928": {
+		"id": 7928,
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Ornate Mithril Shoulder",
+		"str": 5
+	},
+	"8144": {
+		"id": 8144,
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Chromite Pauldrons",
+		"str": 10,
+		"sta": 9
+	},
+	"8163": {
+		"id": 8163,
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Jouster's Pauldrons",
+		"str": 9
+	},
+	"9292|693": {
+		"id": "9292|693",
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Field Plate Pauldrons of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"9292|1203": {
+		"id": "9292|1203",
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Field Plate Pauldrons of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"9411": {
+		"id": 9411,
+		"type": "Mail",
+		"slot": "shoulder",
+		"name": "Rockshard Pauldrons",
+		"str": 2
+	},
+	"9531": {
+		"id": 9531,
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Gemshale Pauldrons",
+		"str": 10,
+		"sta": 9
+	},
+	"9647": {
+		"id": 9647,
+		"type": "Leather",
+		"slot": "shoulder",
+		"name": "Failed Flying Experiment",
+		"agi": 10,
+		"str": 10
+	},
+	"9923|1203": {
+		"id": "9923|1203",
+		"type": "Leather",
+		"slot": "shoulder",
+		"name": "Tracker's Shoulderpads of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"9971|693": {
+		"id": "9971|693",
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Embossed Plate Pauldrons of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"9971|1203": {
+		"id": "9971|1203",
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Embossed Plate Pauldrons of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"10745": {
+		"id": 10745,
+		"type": "Leather",
+		"slot": "shoulder",
+		"name": "Kaylari Shoulders",
+		"str": 11,
+		"sta": 10
+	},
+	"14841": {
+		"id": 14841,
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Tyrant's Epaulets",
+		"agi": 4,
+		"sta": 12
+	},
+	"14901|693": {
+		"id": "14901|693",
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Saltstone Shoulder Pads of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"14901|1203": {
+		"id": "14901|1203",
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Saltstone Shoulder Pads of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"14909|693": {
+		"id": "14909|693",
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Brutish Shoulders of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"14909|1203": {
+		"id": "14909|1203",
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Brutish Shoulders of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"14946|693": {
+		"id": "14946|693",
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Warbringer's Spaulders of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"14946|1203": {
+		"id": "14946|1203",
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Warbringer's Spaulders of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"213302": {
+		"id": 213302,
+		"type": "Leather",
+		"slot": "shoulder",
+		"name": "Mantle of the Cunning Negotiator",
+		"agi": 14,
+		"sta": 11
+	},
+	"213303": {
+		"id": 213303,
+		"type": "Mail",
+		"slot": "shoulder",
+		"name": "Lightning Rod Spaulders",
+		"hit": 1,
+		"sp_hit": 1
+	},
+	"213304": {
+		"id": 213304,
+		"type": "Mail",
+		"slot": "shoulder",
+		"name": "Troggslayer Pauldrons",
+		"agi": 12,
+		"ap": 22,
+		"int": 5
+	},
+	"213305": {
+		"id": 213305,
+		"type": "Plate",
+		"slot": "shoulder",
+		"name": "Machined Alloy Shoulderplates",
+		"str": 12,
+		"sta": 11
+	},
+	"8120": {
+		"id": 8120,
+		"type": "Cloth",
+		"slot": "back",
+		"name": "Heraldic Cloak",
+		"agi": 4,
+		"sta": 9
+	},
+	"15382|1197": {
+		"id": "15382|1197",
+		"type": "Cloth",
+		"slot": "back",
+		"name": "Rageclaw Cloak of the Bear",
+		"sta": 7,
+		"str": 7,
+		"rand": 1197
+	},
+	"16336": {
+		"id": 16336,
+		"type": "Cloth",
+		"slot": "back",
+		"name": "Sergeant Major's Cape",
+		"agi": 6,
+		"str": 6,
+		"sta": 6
+	},
+	"20219": {
+		"id": 20219,
+		"type": "Cloth",
+		"slot": "back",
+		"name": "Tattered Hakkari Cape",
+		"str": 7,
+		"sta": 6
+	},
+	"213307": {
+		"id": 213307,
+		"type": "Cloth",
+		"slot": "back",
+		"name": "Drape of Dismantling",
+		"agi": 6,
+		"str": 8,
+		"sta": 7
+	},
+	"213308": {
+		"id": 213308,
+		"type": "Cloth",
+		"slot": "back",
+		"name": "Prototype Parachute Cloak",
+		"agi": 12,
+		"sta": 4
+	},
+	"216621": {
+		"id": 216621,
+		"type": "Cloth",
+		"slot": "back",
+		"name": "Blooddrenched Drape",
+		"crit": 1,
+		"sp_crit": 1
+	},
+	"7477|1212": {
+		"id": "7477|1212",
+		"type": "Leather",
+		"slot": "chest",
+		"name": "Ranger Tunic of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"8157": {
+		"id": 8157,
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Jouster's Chestplate",
+		"str": 15,
+		"sta": 4
+	},
+	"8211|1212": {
+		"id": "8211|1212",
+		"type": "Leather",
+		"slot": "chest",
+		"name": "Wild Leather Vest of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"9286|702": {
+		"id": "9286|702",
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Field Plate Armor of the Tiger",
+		"agi": 12,
+		"str": 12,
+		"rand": 702
+	},
+	"9286|1212": {
+		"id": "9286|1212",
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Field Plate Armor of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"9286|311": {
+		"id": "9286|311",
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Field Plate Armor of Strength",
+		"str": 19,
+		"rand": 311
+	},
+	"9650": {
+		"id": 9650,
+		"type": "Mail",
+		"slot": "chest",
+		"name": "Honorguard Chestpiece",
+		"str": 22,
+		"sta": 3
+	},
+	"9663": {
+		"id": 9663,
+		"type": "Mail",
+		"slot": "chest",
+		"name": "Dawnrider's Chestpiece",
+		"agi": 16
+	},
+	"9966|702": {
+		"id": "9966|702",
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Embossed Plate Armor of the Tiger",
+		"agi": 12,
+		"str": 12,
+		"rand": 702
+	},
+	"9966|1212": {
+		"id": "9966|1212",
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Embossed Plate Armor of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"9966|311": {
+		"id": "9966|311",
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Embossed Plate Armor of Strength",
+		"str": 19,
+		"rand": 311
+	},
+	"10775": {
+		"id": 10775,
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Carapace of Tuten'kash",
+		"agi": 8,
+		"str": 10,
+		"sta": 15
+	},
+	"11193": {
+		"id": 11193,
+		"type": "Leather",
+		"slot": "chest",
+		"name": "Blazewind Breastplate",
+		"agi": 23,
+		"str": 3,
+		"sta": 5
+	},
+	"11195": {
+		"id": 11195,
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Warforged Chestplate",
+		"str": 24,
+		"sta": 2
+	},
+	"14821": {
+		"id": 14821,
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Symbolic Breastplate",
+		"str": 14,
+		"sta": 9
+	},
+	"14895|699": {
+		"id": "14895|699",
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Saltstone Surcoat of the Tiger",
+		"agi": 11,
+		"str": 11,
+		"rand": 699
+	},
+	"14895|1209": {
+		"id": "14895|1209",
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Saltstone Surcoat of the Bear",
+		"sta": 11,
+		"str": 11,
+		"rand": 1209
+	},
+	"14895|309": {
+		"id": "14895|309",
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Saltstone Surcoat of Strength",
+		"str": 17,
+		"rand": 309
+	},
+	"19041": {
+		"id": 19041,
+		"type": "Leather",
+		"slot": "chest",
+		"name": "Pratt's Handcrafted Tunic",
+		"agi": 7,
+		"str": 6,
+		"sta": 15
+	},
+	"19042": {
+		"id": 19042,
+		"type": "Leather",
+		"slot": "chest",
+		"name": "Jangdor's Handcrafted Tunic",
+		"agi": 7,
+		"str": 6,
+		"sta": 15
+	},
+	"213312": {
+		"id": 213312,
+		"type": "Leather",
+		"slot": "chest",
+		"name": "Insulated Apron",
+		"hit": 1,
+		"sp_hit": 1
+	},
+	"213313": {
+		"id": 213313,
+		"type": "Leather",
+		"slot": "chest",
+		"name": "Insulated Chestguard",
+		"agi": 13,
+		"str": 17,
+		"sta": 10
+	},
+	"213314": {
+		"id": 213314,
+		"type": "Mail",
+		"slot": "chest",
+		"name": "Electromantic Chainmail",
+		"sta": 7,
+		"crit": 1,
+		"sp_crit": 1,
+		"ap": 26
+	},
+	"213316": {
+		"id": 213316,
+		"type": "Plate",
+		"slot": "chest",
+		"name": "H.A.Z.A.R.D. Breastplate",
+		"agi": 11,
+		"str": 11,
+		"sta": 16
+	},
+	"216485": {
+		"id": 216485,
+		"type": "Plate",
+		"slot": "chest",
+		"name": "Shockforged Breastplate",
+		"sta": 3,
+		"crit": 1,
+		"sp_crit": 1
+	},
+	"7534|1197": {
+		"id": "7534|1197",
+		"type": "Leather",
+		"slot": "wrist",
+		"name": "Cabalist Bracers of the Bear",
+		"sta": 7,
+		"str": 7,
+		"rand": 1197
+	},
+	"8137": {
+		"id": 8137,
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Chromite Bracers",
+		"agi": 4,
+		"sta": 8
+	},
+	"8156": {
+		"id": 8156,
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Jouster's Wristguards",
+		"agi": 2,
+		"sta": 8
+	},
+	"9285|684": {
+		"id": "9285|684",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Field Plate Vambraces of the Tiger",
+		"agi": 6,
+		"str": 6,
+		"rand": 684
+	},
+	"9285|1194": {
+		"id": "9285|1194",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Field Plate Vambraces of the Bear",
+		"sta": 6,
+		"str": 6,
+		"rand": 1194
+	},
+	"9285|191": {
+		"id": "9285|191",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Field Plate Vambraces of Strength",
+		"str": 10,
+		"rand": 191
+	},
+	"9432": {
+		"id": 9432,
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Skullplate Bracers",
+		"str": 5,
+		"sta": 9
+	},
+	"9972|684": {
+		"id": "9972|684",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Embossed Plate Bracers of the Tiger",
+		"agi": 6,
+		"str": 6,
+		"rand": 684
+	},
+	"9972|1194": {
+		"id": "9972|1194",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Embossed Plate Bracers of the Bear",
+		"sta": 6,
+		"str": 6,
+		"rand": 1194
+	},
+	"9972|191": {
+		"id": "9972|191",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Embossed Plate Bracers of Strength",
+		"str": 10,
+		"rand": 191
+	},
+	"10094|687": {
+		"id": "10094|687",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Gothic Plate Vambraces of the Tiger",
+		"agi": 7,
+		"str": 7,
+		"rand": 687
+	},
+	"10094|1197": {
+		"id": "10094|1197",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Gothic Plate Vambraces of the Bear",
+		"sta": 7,
+		"str": 7,
+		"rand": 1197
+	},
+	"10094|191": {
+		"id": "10094|191",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Gothic Plate Vambraces of Strength",
+		"str": 10,
+		"rand": 191
+	},
+	"10746": {
+		"id": 10746,
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Runesteel Vambraces",
+		"str": 2,
+		"sta": 11
+	},
+	"14778": {
+		"id": 14778,
+		"type": "Mail",
+		"slot": "wrist",
+		"name": "Khan's Bindings",
+		"str": 6,
+		"sta": 5
+	},
+	"14834": {
+		"id": 14834,
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Tyrant's Armguards",
+		"str": 4,
+		"sta": 7
+	},
+	"14903|684": {
+		"id": "14903|684",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Saltstone Armsplints of the Tiger",
+		"agi": 6,
+		"str": 6,
+		"rand": 684
+	},
+	"14903|1194": {
+		"id": "14903|1194",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Saltstone Armsplints of the Bear",
+		"sta": 6,
+		"str": 6,
+		"rand": 1194
+	},
+	"14903|191": {
+		"id": "14903|191",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Saltstone Armsplints of Strength",
+		"str": 10,
+		"rand": 191
+	},
+	"14910|687": {
+		"id": "14910|687",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Brutish Armguards of the Tiger",
+		"agi": 7,
+		"str": 7,
+		"rand": 687
+	},
+	"14910|1197": {
+		"id": "14910|1197",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Brutish Armguards of the Bear",
+		"sta": 7,
+		"str": 7,
+		"rand": 1197
+	},
+	"14910|191": {
+		"id": "14910|191",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Brutish Armguards of Strength",
+		"str": 10,
+		"rand": 191
+	},
+	"14941|684": {
+		"id": "14941|684",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Warbringer's Armsplints of the Tiger",
+		"agi": 6,
+		"str": 6,
+		"rand": 684
+	},
+	"14941|1194": {
+		"id": "14941|1194",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Warbringer's Armsplints of the Bear",
+		"sta": 6,
+		"str": 6,
+		"rand": 1194
+	},
+	"14941|191": {
+		"id": "14941|191",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Warbringer's Armsplints of Strength",
+		"str": 10,
+		"rand": 191
+	},
+	"14956|687": {
+		"id": "14956|687",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Bloodforged Bindings of the Tiger",
+		"agi": 7,
+		"str": 7,
+		"rand": 687
+	},
+	"14956|1197": {
+		"id": "14956|1197",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Bloodforged Bindings of the Bear",
+		"sta": 7,
+		"str": 7,
+		"rand": 1197
+	},
+	"14956|191": {
+		"id": "14956|191",
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Bloodforged Bindings of Strength",
+		"str": 10,
+		"rand": 191
+	},
+	"19581": {
+		"id": 19581,
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Berserker Bracers",
+		"agi": 6,
+		"str": 14,
+		"sta": 8
+	},
+	"19584": {
+		"id": 19584,
+		"type": "Mail",
+		"slot": "wrist",
+		"name": "Windtalker's Wristguards",
+		"sta": 6,
+		"ap": 28
+	},
+	"19590": {
+		"id": 19590,
+		"type": "Leather",
+		"slot": "wrist",
+		"name": "Forest Stalker's Bracers",
+		"agi": 14,
+		"str": 8,
+		"sta": 6
+	},
+	"213317": {
+		"id": 213317,
+		"type": "Mail",
+		"slot": "wrist",
+		"name": "Experimental Aim Stabilizers",
+		"agi": 7,
+		"ap": 22
+	},
+	"213318": {
+		"id": 213318,
+		"type": "Leather",
+		"slot": "wrist",
+		"name": "Ornate Dark Iron Bangles",
+		"hit": 1,
+		"sp_hit": 1
+	},
+	"216701": {
+		"id": 216701,
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "Sergeant Major's Plate Wristguards",
+		"str": 5,
+		"sta": 12
+	},
+	"216705": {
+		"id": 216705,
+		"type": "Plate",
+		"slot": "wrist",
+		"name": "First Sergeant's Plate Bracers",
+		"str": 5,
+		"sta": 12
+	},
+	"7927": {
+		"id": 7927,
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Ornate Mithril Gloves",
+		"crit": 1
+	},
+	"7938": {
+		"id": 7938,
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Truesilver Gauntlets",
+		"str": 16,
+		"sta": 7
+	},
+	"8139": {
+		"id": 8139,
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Chromite Gauntlets",
+		"agi": 4,
+		"str": 12
+	},
+	"8158": {
+		"id": 8158,
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Jouster's Gauntlets",
+		"agi": 3,
+		"str": 11
+	},
+	"8204": {
+		"id": 8204,
+		"type": "Mail",
+		"slot": "hands",
+		"name": "Tough Scorpid Gloves",
+		"agi": 10
+	},
+	"8347": {
+		"id": 8347,
+		"type": "Mail",
+		"slot": "hands",
+		"name": "Dragonscale Gauntlets",
+		"sta": 7,
+		"crit": 1
+	},
+	"9287|693": {
+		"id": "9287|693",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Field Plate Gauntlets of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"9287|1203": {
+		"id": "9287|1203",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Field Plate Gauntlets of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"9287|219": {
+		"id": "9287|219",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Field Plate Gauntlets of Strength",
+		"str": 13,
+		"rand": 219
+	},
+	"9410|699": {
+		"id": "9410|699",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Cragfists of the Tiger",
+		"agi": 11,
+		"str": 11,
+		"rand": 699
+	},
+	"9410|1209": {
+		"id": "9410|1209",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Cragfists of the Bear",
+		"sta": 11,
+		"str": 11,
+		"rand": 1209
+	},
+	"9410|308": {
+		"id": "9410|308",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Cragfists of Strength",
+		"str": 16,
+		"rand": 308
+	},
+	"9631": {
+		"id": 9631,
+		"type": "Leather",
+		"slot": "hands",
+		"name": "Pratt's Handcrafted Gloves",
+		"agi": 9,
+		"str": 10
+	},
+	"9632": {
+		"id": 9632,
+		"type": "Leather",
+		"slot": "hands",
+		"name": "Jangdor's Handcrafted Gloves",
+		"agi": 9,
+		"str": 10
+	},
+	"9967|693": {
+		"id": "9967|693",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Embossed Plate Gauntlets of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"9967|1203": {
+		"id": "9967|1203",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Embossed Plate Gauntlets of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"9967|220": {
+		"id": "9967|220",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Embossed Plate Gauntlets of Strength",
+		"str": 14,
+		"rand": 220
+	},
+	"13071": {
+		"id": 13071,
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Plated Fist of Hakoo",
+		"agi": 10,
+		"str": 10,
+		"sta": 10
+	},
+	"14826": {
+		"id": 14826,
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Symbolic Gauntlets",
+		"str": 9,
+		"sta": 6
+	},
+	"14833": {
+		"id": 14833,
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Tyrant's Gauntlets",
+		"str": 12
+	},
+	"14897|693": {
+		"id": "14897|693",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Saltstone Gauntlets of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"14897|1203": {
+		"id": "14897|1203",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Saltstone Gauntlets of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"14897|219": {
+		"id": "14897|219",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Saltstone Gauntlets of Strength",
+		"str": 13,
+		"rand": 219
+	},
+	"14905|693": {
+		"id": "14905|693",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Brutish Gauntlets of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"14905|1203": {
+		"id": "14905|1203",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Brutish Gauntlets of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"14905|220": {
+		"id": "14905|220",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Brutish Gauntlets of Strength",
+		"str": 14,
+		"rand": 220
+	},
+	"14942|693": {
+		"id": "14942|693",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Warbringer's Gauntlets of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"14942|1203": {
+		"id": "14942|1203",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Warbringer's Gauntlets of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"14942|219": {
+		"id": "14942|219",
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Warbringer's Gauntlets of Strength",
+		"str": 13,
+		"rand": 219
+	},
+	"15166|693": {
+		"id": "15166|693",
+		"type": "Leather",
+		"slot": "hands",
+		"name": "Imposing Gloves of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"15166|1203": {
+		"id": "15166|1203",
+		"type": "Leather",
+		"slot": "hands",
+		"name": "Imposing Gloves of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"213288": {
+		"id": 213288,
+		"type": "Plate",
+		"slot": "hands",
+		"name": "Grubbis Grubby Gauntlets",
+		"str": 9,
+		"sta": 5,
+		"crit": 1,
+		"sp_crit": 1
+	},
+	"213319": {
+		"id": 213319,
+		"type": "Leather",
+		"slot": "hands",
+		"name": "Machinist's Gloves",
+		"agi": 6,
+		"str": 7,
+		"hit": 1,
+		"ap": 30,
+		"sp_hit": 1
+	},
+	"213320": {
+		"id": 213320,
+		"type": "Mail",
+		"slot": "hands",
+		"name": "Fingers of Arcane Accuracy",
+		"agi": 6,
+		"sta": 7,
+		"sp_hit": 1,
+		"int": 10
+	},
+	"213391": {
+		"id": 213391,
+		"type": "Plate",
+		"slot": "hands",
+		"name": "UNUSED Electrified Mithril Gauntlets",
+		"str": 16,
+		"sta": 7
+	},
+	"213278": {
+		"id": 213278,
+		"type": "FistMace",
+		"slot": "hands",
+		"name": "Bonk-Maestro's Handguards",
+		"agi": 10,
+		"sta": 11,
+		"skill": 3
+	},
+	"8140": {
+		"id": 8140,
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Chromite Girdle",
+		"str": 9,
+		"sta": 9
+	},
+	"8159": {
+		"id": 8159,
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Jouster's Girdle",
+		"str": 10,
+		"sta": 4
+	},
+	"9288|693": {
+		"id": "9288|693",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Field Plate Girdle of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"9288|1203": {
+		"id": "9288|1203",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Field Plate Girdle of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"9288|219": {
+		"id": "9288|219",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Field Plate Girdle of Strength",
+		"str": 13,
+		"rand": 219
+	},
+	"9968|693": {
+		"id": "9968|693",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Embossed Plate Girdle of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"9968|1203": {
+		"id": "9968|1203",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Embossed Plate Girdle of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"9968|219": {
+		"id": "9968|219",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Embossed Plate Girdle of Strength",
+		"str": 13,
+		"rand": 219
+	},
+	"10088|693": {
+		"id": "10088|693",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Gothic Plate Girdle of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"10088|1203": {
+		"id": "10088|1203",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Gothic Plate Girdle of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"10088|220": {
+		"id": "10088|220",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Gothic Plate Girdle of Strength",
+		"str": 14,
+		"rand": 220
+	},
+	"13145": {
+		"id": 13145,
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Enormous Ogre Belt",
+		"str": 12,
+		"sta": 5
+	},
+	"14652": {
+		"id": 14652,
+		"type": "Leather",
+		"slot": "waist",
+		"name": "Scorpashi Sash",
+		"agi": 10,
+		"str": 4,
+		"sta": 7
+	},
+	"14827": {
+		"id": 14827,
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Symbolic Belt",
+		"agi": 3,
+		"str": 8
+	},
+	"14838": {
+		"id": 14838,
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Tyrant's Belt",
+		"str": 9
+	},
+	"14898|693": {
+		"id": "14898|693",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Saltstone Girdle of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"14898|1203": {
+		"id": "14898|1203",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Saltstone Girdle of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"14898|219": {
+		"id": "14898|219",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Saltstone Girdle of Strength",
+		"str": 13,
+		"rand": 219
+	},
+	"14906|693": {
+		"id": "14906|693",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Brutish Belt of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"14906|1203": {
+		"id": "14906|1203",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Brutish Belt of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"14906|220": {
+		"id": "14906|220",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Brutish Belt of Strength",
+		"str": 14,
+		"rand": 220
+	},
+	"14943|693": {
+		"id": "14943|693",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Warbringer's Belt of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"14943|1203": {
+		"id": "14943|1203",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Warbringer's Belt of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"14943|219": {
+		"id": "14943|219",
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Warbringer's Belt of Strength",
+		"str": 13,
+		"rand": 219
+	},
+	"20125": {
+		"id": 20125,
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Highlander's Plate Girdle",
+		"str": 15,
+		"sta": 6
+	},
+	"20206": {
+		"id": 20206,
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Defiler's Plate Girdle",
+		"str": 15,
+		"sta": 6
+	},
+	"213322": {
+		"id": 213322,
+		"type": "Leather",
+		"slot": "waist",
+		"name": "Skullduggery Waistband",
+		"agi": 10,
+		"str": 10,
+		"sta": 6
+	},
+	"213324": {
+		"id": 213324,
+		"type": "Mail",
+		"slot": "waist",
+		"name": "Electromagnetic Waistcord",
+		"sta": 5,
+		"hit": 1,
+		"sp_hit": 1
+	},
+	"213325": {
+		"id": 213325,
+		"type": "Mail",
+		"slot": "waist",
+		"name": "Darkvision Girdle",
+		"sta": 4,
+		"hit": 1,
+		"ap": 24,
+		"sp_hit": 1
+	},
+	"213326": {
+		"id": 213326,
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Girdle of Reclamation",
+		"str": 6,
+		"int": 4,
+		"sta": 5,
+		"sp": 16
+	},
+	"213327": {
+		"id": 213327,
+		"type": "Plate",
+		"slot": "waist",
+		"name": "Belt of the Trogg Berserker",
+		"str": 17,
+		"sta": 5
+	},
+	"215115": {
+		"id": 215115,
+		"type": "Cloth",
+		"slot": "waist",
+		"name": "Hyperconductive Goldwrap",
+		"sta": 9,
+		"crit": 1,
+		"sp_crit": 1,
+		"hit": 1,
+		"sp_hit": 1
+	},
+	"215380": {
+		"id": 215380,
+		"type": "Varied2H",
+		"slot": "waist",
+		"name": "Power-Assisted Lifting Belt",
+		"str": 14,
+		"sta": 15,
+		"skill": 3
+	},
+	"7926": {
+		"id": 7926,
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Ornate Mithril Pants",
+		"str": 12
+	},
+	"8162": {
+		"id": 8162,
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Jouster's Legplates",
+		"str": 11
+	},
+	"9291|702": {
+		"id": "9291|702",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Field Plate Leggings of the Tiger",
+		"agi": 12,
+		"str": 12,
+		"rand": 702
+	},
+	"9291|1212": {
+		"id": "9291|1212",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Field Plate Leggings of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"9291|311": {
+		"id": "9291|311",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Field Plate Leggings of Strength",
+		"str": 19,
+		"rand": 311
+	},
+	"9652": {
+		"id": 9652,
+		"type": "Leather",
+		"slot": "legs",
+		"name": "Gryphon Rider's Leggings",
+		"agi": 15,
+		"str": 15
+	},
+	"9933|1212": {
+		"id": "9933|1212",
+		"type": "Mail",
+		"slot": "legs",
+		"name": "Brigade Leggings of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"9970|702": {
+		"id": "9970|702",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Embossed Plate Leggings of the Tiger",
+		"agi": 12,
+		"str": 12,
+		"rand": 702
+	},
+	"9970|1212": {
+		"id": "9970|1212",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Embossed Plate Leggings of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"9970|311": {
+		"id": "9970|311",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Embossed Plate Leggings of Strength",
+		"str": 19,
+		"rand": 311
+	},
+	"10740": {
+		"id": 10740,
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Centurion Legplates",
+		"agi": 15,
+		"str": 15
+	},
+	"14829": {
+		"id": 14829,
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Symbolic Legplates",
+		"agi": 6,
+		"str": 15
+	},
+	"14900|699": {
+		"id": "14900|699",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Saltstone Legplates of the Tiger",
+		"agi": 11,
+		"str": 11,
+		"rand": 699
+	},
+	"14900|1209": {
+		"id": "14900|1209",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Saltstone Legplates of the Bear",
+		"sta": 11,
+		"str": 11,
+		"rand": 1209
+	},
+	"14900|309": {
+		"id": "14900|309",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Saltstone Legplates of Strength",
+		"str": 17,
+		"rand": 309
+	},
+	"14945|702": {
+		"id": "14945|702",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Warbringer's Legguards of the Tiger",
+		"agi": 12,
+		"str": 12,
+		"rand": 702
+	},
+	"14945|1212": {
+		"id": "14945|1212",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Warbringer's Legguards of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"14945|311": {
+		"id": "14945|311",
+		"type": "Plate",
+		"slot": "legs",
+		"name": "Warbringer's Legguards of Strength",
+		"str": 19,
+		"rand": 311
+	},
+	"15168|1212": {
+		"id": "15168|1212",
+		"type": "Leather",
+		"slot": "legs",
+		"name": "Imposing Pants of the Bear",
+		"sta": 12,
+		"str": 12,
+		"rand": 1212
+	},
+	"213299": {
+		"id": 213299,
+		"type": "Leather",
+		"slot": "legs",
+		"name": "Petrolspill Pants",
+		"agi": 21,
+		"sta": 11
+	},
+	"213330": {
+		"id": 213330,
+		"type": "Plate",
+		"slot": "legs",
+		"name": "H.A.Z.A.R.D. Legplates",
+		"str": 13,
+		"sta": 15,
+		"hit": 1,
+		"sp_hit": 1
+	},
+	"213332": {
+		"id": 213332,
+		"type": "Leather",
+		"slot": "legs",
+		"name": "Insulated Legguards",
+		"agi": 8,
+		"str": 13,
+		"sta": 14,
+		"hit": 1,
+		"sp_hit": 1
+	},
+	"213333": {
+		"id": 213333,
+		"type": "Mail",
+		"slot": "legs",
+		"name": "Electromantic Chausses",
+		"sta": 10,
+		"hit": 1,
+		"ap": 28,
+		"sp_hit": 1
+	},
+	"6423": {
+		"id": 6423,
+		"type": "Mail",
+		"slot": "feet",
+		"name": "Blackforge Greaves",
+		"agi": 10,
+		"str": 9
+	},
+	"8141": {
+		"id": 8141,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Chromite Greaves",
+		"str": 4,
+		"sta": 12
+	},
+	"8160": {
+		"id": 8160,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Jouster's Greaves",
+		"str": 8,
+		"sta": 8
+	},
+	"9289|693": {
+		"id": "9289|693",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Field Plate Boots of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"9289|1203": {
+		"id": "9289|1203",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Field Plate Boots of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"9387|693": {
+		"id": "9387|693",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Revelosh's Boots of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"9387|1203": {
+		"id": "9387|1203",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Revelosh's Boots of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"9630": {
+		"id": 9630,
+		"type": "Leather",
+		"slot": "feet",
+		"name": "Pratt's Handcrafted Boots",
+		"agi": 11,
+		"sta": 6
+	},
+	"9633": {
+		"id": 9633,
+		"type": "Leather",
+		"slot": "feet",
+		"name": "Jangdor's Handcrafted Boots",
+		"agi": 11,
+		"sta": 6
+	},
+	"9637": {
+		"id": 9637,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Shinkicker Boots",
+		"agi": 9,
+		"str": 10
+	},
+	"9973|693": {
+		"id": "9973|693",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Embossed Plate Boots of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"9973|1203": {
+		"id": "9973|1203",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Embossed Plate Boots of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"10089|693": {
+		"id": "10089|693",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Gothic Sabatons of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"10089|1203": {
+		"id": "10089|1203",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Gothic Sabatons of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"13068": {
+		"id": 13068,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Obsidian Greaves",
+		"agi": 6,
+		"str": 10,
+		"sta": 10
+	},
+	"14549": {
+		"id": 14549,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Boots of Avoidance",
+		"agi": 14,
+		"sta": 11
+	},
+	"14828": {
+		"id": 14828,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Symbolic Greaves",
+		"str": 9,
+		"sta": 6
+	},
+	"14839": {
+		"id": 14839,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Tyrant's Greaves",
+		"agi": 4,
+		"str": 8,
+		"sta": 8
+	},
+	"14896|693": {
+		"id": "14896|693",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Saltstone Sabatons of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"14896|1203": {
+		"id": "14896|1203",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Saltstone Sabatons of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"14940|693": {
+		"id": "14940|693",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Warbringer's Sabatons  of the Tiger",
+		"agi": 9,
+		"str": 9,
+		"rand": 693
+	},
+	"14940|1203": {
+		"id": "14940|1203",
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Warbringer's Sabatons  of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"15162|1203": {
+		"id": "15162|1203",
+		"type": "Leather",
+		"slot": "feet",
+		"name": "Imposing Boots of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"15614|1203": {
+		"id": "15614|1203",
+		"type": "Mail",
+		"slot": "feet",
+		"name": "Bonelink Sabatons of the Bear",
+		"sta": 9,
+		"str": 9,
+		"rand": 1203
+	},
+	"20128": {
+		"id": 20128,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Highlander's Plate Greaves",
+		"agi": 8,
+		"str": 8,
+		"sta": 8
+	},
+	"20209": {
+		"id": 20209,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Defiler's Plate Greaves",
+		"agi": 8,
+		"str": 8,
+		"sta": 8
+	},
+	"217306": {
+		"id": 217306,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Revelosh's Boots",
+		"str": 12,
+		"sta": 11
+	},
+	"213294": {
+		"id": 213294,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "Caverndeep Sabatons",
+		"agi": 9,
+		"str": 7,
+		"sta": 10
+	},
+	"213335": {
+		"id": 213335,
+		"type": "Plate",
+		"slot": "feet",
+		"name": "H.A.Z.A.R.D. Boots",
+		"str": 13,
+		"sta": 12
+	},
+	"213339": {
+		"id": 213339,
+		"type": "Mail",
+		"slot": "feet",
+		"name": "Electromantic Grounding Sabatons",
+		"agi": 11,
+		"sta": 9,
+		"int": 9
+	},
+	"213340": {
+		"id": 213340,
+		"type": "Leather",
+		"slot": "feet",
+		"name": "Gnomebot Operators Boots",
+		"agi": 7,
+		"str": 9,
+		"sta": 9
+	},
+	"213341": {
+		"id": 213341,
+		"type": "Leather",
+		"slot": "feet",
+		"name": "Insulated Workboots",
+		"agi": 9,
+		"str": 8,
+		"sta": 8
+	},
+	"9533": {
+		"id": 9533,
+		"type": "Miscellaneous",
+		"slot": "finger",
+		"name": "Masons Fraternity Ring",
+		"agi": 13,
+		"sta": 5
+	},
+	"12012|687": {
+		"id": "12012|687",
+		"type": "Miscellaneous",
+		"slot": "finger",
+		"name": "Marsh Ring of the Tiger",
+		"agi": 7,
+		"str": 7,
+		"rand": 687
+	},
+	"213284": {
+		"id": 213284,
+		"type": "Miscellaneous",
+		"slot": "finger",
+		"name": "Hypercharged Gear of Devastation",
+		"agi": 8,
+		"str": 7,
+		"sta": 10,
+		"resist": {
+			"nature": 5
+		}
+	},
+	"21567": {
+		"id": 21567,
+		"type": "Miscellaneous",
+		"slot": "trinket",
+		"name": "Rune of Duty",
+		"sta": 7
+	},
+	"216505": {
+		"id": 216505,
+		"type": "Miscellaneous",
+		"slot": "trinket",
+		"name": "Bloodlight Crusader's Radiance",
+		"proc": {
+			"magic": true,
+			"dmg": 150,
+			"chance": 100,
+			"cd": 300
+		}
+	},
+	"213348": {
+		"id": 213348,
+		"type": "Miscellaneous",
+		"slot": "trinket",
+		"name": "Gyromatic Experiment 420b",
+		"resist": {
+			"frost": 10
+		},
+		"ap": 18
+	},
+	"215461": {
+		"id": 215461,
+		"type": "Miscellaneous",
+		"slot": "trinket",
+		"name": "Domesticated Attack Chicken"
+	},
+	"15287|678": {
+		"id": "15287|678",
+		"type": "Bows",
+		"slot": "ranged",
+		"name": "Crusader Bow of the Tiger",
+		"speed": 2.2,
+		"mindmg": 32,
+		"maxdmg": 60,
+		"agi": 4,
+		"str": 4,
+		"rand": 678
+	},
+	"15287|1188": {
+		"id": "15287|1188",
+		"type": "Bows",
+		"slot": "ranged",
+		"name": "Crusader Bow of the Bear",
+		"speed": 2.2,
+		"mindmg": 32,
+		"maxdmg": 60,
+		"sta": 4,
+		"str": 4,
+		"rand": 1188
+	},
+	"15287|136": {
+		"id": "15287|136",
+		"type": "Bows",
+		"slot": "ranged",
+		"name": "Crusader Bow of Strength",
+		"speed": 2.2,
+		"mindmg": 32,
+		"maxdmg": 60,
+		"str": 6,
+		"rand": 136
+	},
+	"213293": {
+		"id": 213293,
+		"type": "Guns",
+		"slot": "ranged",
+		"name": "Hi-tech Supergun Mk.VII",
+		"speed": 2.3,
+		"mindmg": 38,
+		"maxdmg": 71,
+		"sta": 4,
+		"ap": 12
+	},
+	"213355": {
+		"id": 213355,
+		"type": "Crossbow",
+		"slot": "ranged",
+		"name": "Falco's Sting",
+		"speed": 2,
+		"mindmg": 33,
+		"maxdmg": 62,
+		"agi": 8
+	},
+	"2164": {
+		"id": 2164,
+		"type": "Dagger",
+		"slot": "onehand",
+		"name": "Gut Ripper",
+		"speed": 1.8,
+		"mindmg": 42,
+		"maxdmg": 80,
+		"proc": {
+			"dmg": 108
+		}
+	},
+	"2815": {
+		"id": 2815,
+		"type": "Axe",
+		"slot": "mainhand",
+		"name": "Curve-bladed Ripper",
+		"speed": 1.9,
+		"mindmg": 40,
+		"maxdmg": 75,
+		"str": 8,
+		"sta": 5
+	},
+	"7943": {
+		"id": 7943,
+		"type": "Sword",
+		"slot": "mainhand",
+		"name": "Wicked Mithril Blade",
+		"speed": 2.3,
+		"mindmg": 43,
+		"maxdmg": 80,
+		"agi": 4,
+		"str": 6
+	},
+	"9359": {
+		"id": 9359,
+		"type": "Mace",
+		"slot": "onehand",
+		"name": "Southsea Lamp",
+		"speed": 2.3,
+		"mindmg": 49,
+		"maxdmg": 91,
+		"agi": 9,
+		"sta": 4
+	},
+	"9465": {
+		"id": 9465,
+		"type": "Axe",
+		"slot": "onehand",
+		"name": "Digmaster 5000",
+		"speed": 1.8,
+		"mindmg": 38,
+		"maxdmg": 71,
+		"agi": 4,
+		"proc": {
+			"spell": "Vibroblade"
+		}
+	},
+	"9651": {
+		"id": 9651,
+		"type": "Mace",
+		"slot": "mainhand",
+		"name": "Gryphon Rider's Stormhammer",
+		"speed": 2.7,
+		"mindmg": 59,
+		"maxdmg": 111,
+		"proc": {
+			"magic": true,
+			"procgcd": true,
+			"dmg": 108
+		}
+	},
+	"9684": {
+		"id": 9684,
+		"type": "Axe",
+		"slot": "mainhand",
+		"name": "Force of the Hippogryph",
+		"speed": 2.4,
+		"mindmg": 51,
+		"maxdmg": 95,
+		"agi": 9
+	},
+	"10744": {
+		"id": 10744,
+		"type": "Axe",
+		"slot": "mainhand",
+		"name": "Axe of the Ebon Drake",
+		"speed": 1.9,
+		"mindmg": 40,
+		"maxdmg": 75,
+		"str": 9
+	},
+	"10750": {
+		"id": 10750,
+		"type": "Dagger",
+		"slot": "onehand",
+		"name": "Lifeforce Dirk",
+		"speed": 1.6,
+		"mindmg": 40,
+		"maxdmg": 75,
+		"sta": 11
+	},
+	"11856": {
+		"id": 11856,
+		"type": "Dagger",
+		"slot": "onehand",
+		"name": "Ceremonial Elven Blade",
+		"speed": 1.8,
+		"mindmg": 33,
+		"maxdmg": 63,
+		"agi": 6,
+		"sta": 3
+	},
+	"13026": {
+		"id": 13026,
+		"type": "Mace",
+		"slot": "mainhand",
+		"name": "Heaven's Light",
+		"speed": 2.7,
+		"mindmg": 57,
+		"maxdmg": 107,
+		"agi": 4,
+		"str": 4,
+		"sta": 4
+	},
+	"15215|681": {
+		"id": "15215|681",
+		"type": "Sword",
+		"slot": "mainhand",
+		"name": "Furious Falchion of the Tiger",
+		"speed": 2.5,
+		"mindmg": 46,
+		"maxdmg": 87,
+		"agi": 5,
+		"str": 5,
+		"rand": 681
+	},
+	"15215|1191": {
+		"id": "15215|1191",
+		"type": "Sword",
+		"slot": "mainhand",
+		"name": "Furious Falchion of the Bear",
+		"speed": 2.5,
+		"mindmg": 46,
+		"maxdmg": 87,
+		"sta": 5,
+		"str": 5,
+		"rand": 1191
+	},
+	"15215|189": {
+		"id": "15215|189",
+		"type": "Sword",
+		"slot": "mainhand",
+		"name": "Furious Falchion of Strength",
+		"speed": 2.5,
+		"mindmg": 46,
+		"maxdmg": 87,
+		"str": 8,
+		"rand": 189
+	},
+	"213105": {
+		"id": 213105,
+		"type": "Mace",
+		"slot": "onehand",
+		"name": "Shawarmageddon",
+		"speed": 2.6,
+		"mindmg": 50,
+		"maxdmg": 93,
+		"proc": {
+			"spell": "Spicy"
+		}
+	},
+	"213286": {
+		"id": 213286,
+		"type": "Sword",
+		"slot": "mainhand",
+		"name": "Electrocutioner's Needle",
+		"speed": 1.7,
+		"mindmg": 41,
+		"maxdmg": 75,
+		"proc": {
+			"magic": true,
+			"dmg": 30
+		}
+	},
+	"213291": {
+		"id": 213291,
+		"type": "Dagger",
+		"slot": "onehand",
+		"name": "Toxic Revenger II",
+		"speed": 1.8,
+		"mindmg": 43,
+		"maxdmg": 80,
+		"proc": {
+			"magic": true,
+			"procgcd": true,
+			"tick": 31,
+			"interval": "5000",
+			"duration": "15000"
+		}
+	},
+	"213295": {
+		"id": 213295,
+		"type": "Axe",
+		"slot": "onehand",
+		"name": "Ultrasonic Vibroblade",
+		"speed": 2.3,
+		"mindmg": 49,
+		"maxdmg": 91,
+		"proc": {
+			"spell": "Ultrasonic"
+		}
+	},
+	"213297": {
+		"id": 213297,
+		"type": "Mace",
+		"slot": "onehand",
+		"name": "Oscillating Blasthammer",
+		"speed": 2.4,
+		"mindmg": 52,
+		"maxdmg": 94,
+		"str": 5,
+		"sta": 7
+	},
+	"213352": {
+		"id": 213352,
+		"type": "Mace",
+		"slot": "mainhand",
+		"name": "Gear-Mender's Grace",
+		"speed": 2.5,
+		"mindmg": 53,
+		"maxdmg": 99
+	},
+	"213409": {
+		"id": 213409,
+		"type": "Fist",
+		"slot": "mainhand",
+		"name": "Mekkatorque's Arcano-Shredder",
+		"speed": 2.6,
+		"mindmg": 62,
+		"maxdmg": 115,
+		"agi": 3,
+		"str": 2,
+		"proc": {
+			"magic": true,
+			"dmg": 31
+		}
+	},
+	"213410": {
+		"id": 213410,
+		"type": "Dagger",
+		"slot": "mainhand",
+		"name": "Glimmering Gizmoblade",
+		"speed": 1.2,
+		"mindmg": 21,
+		"maxdmg": 42,
+		"sta": 7
+	},
+	"213560": {
+		"id": 213560,
+		"type": "Mace",
+		"slot": "onehand",
+		"name": "Mechanostrider Muffler",
+		"speed": 2.4,
+		"mindmg": 51,
+		"maxdmg": 95,
+		"sta": 7,
+		"ap": 16
+	},
+	"216496": {
+		"id": 216496,
+		"type": "Mace",
+		"slot": "onehand",
+		"name": "Sanguine Skullcrusher",
+		"speed": 2.3,
+		"mindmg": 50,
+		"maxdmg": 93,
+		"agi": 6,
+		"str": 10
+	},
+	"216497": {
+		"id": 216497,
+		"type": "Sword",
+		"slot": "mainhand",
+		"name": "Exsanguinar",
+		"speed": 2,
+		"mindmg": 44,
+		"maxdmg": 81,
+		"sta": 6,
+		"proc": {
+			"tick": 6,
+			"interval": "2000",
+			"duration": "30000",
+			"bleed": true,
+			"dmg": 66,
+			"magic": true
+		}
+	},
+	"9918|687": {
+		"id": "9918|687",
+		"type": "Shield",
+		"slot": "offhand",
+		"name": "Brigade Defender of the Tiger",
+		"agi": 7,
+		"str": 7,
+		"rand": 687
+	},
+	"9918|1197": {
+		"id": "9918|1197",
+		"type": "Shield",
+		"slot": "offhand",
+		"name": "Brigade Defender of the Bear",
+		"sta": 7,
+		"str": 7,
+		"rand": 1197
+	},
+	"9918|191": {
+		"id": "9918|191",
+		"type": "Shield",
+		"slot": "offhand",
+		"name": "Brigade Defender of Strength",
+		"str": 10,
+		"rand": 191
+	},
+	"9935|687": {
+		"id": "9935|687",
+		"type": "Shield",
+		"slot": "offhand",
+		"name": "Embossed Plate Shield of the Tiger",
+		"agi": 7,
+		"str": 7,
+		"rand": 687
+	},
+	"9935|1197": {
+		"id": "9935|1197",
+		"type": "Shield",
+		"slot": "offhand",
+		"name": "Embossed Plate Shield of the Bear",
+		"sta": 7,
+		"str": 7,
+		"rand": 1197
+	},
+	"9935|191": {
+		"id": "9935|191",
+		"type": "Shield",
+		"slot": "offhand",
+		"name": "Embossed Plate Shield of Strength",
+		"str": 10,
+		"rand": 191
+	},
+	"10686": {
+		"id": 10686,
+		"type": "Shield",
+		"slot": "offhand",
+		"name": "Aegis of Battle",
+		"agi": 6,
+		"sta": 10
+	},
+	"213390": {
+		"id": 213390,
+		"type": "Shield",
+		"slot": "offhand",
+		"name": "Whirling Truesilver Gearwall",
+		"str": 9,
+		"sta": 10
+	},
+	"213442": {
+		"id": 213442,
+		"type": "Fist",
+		"slot": "offhand",
+		"name": "Cogmaster's Claw",
+		"speed": 2.8,
+		"mindmg": 60,
+		"maxdmg": 111,
+		"agi": 6,
+		"str": 6,
+		"sta": 5
+	},
+	"9423": {
+		"id": 9423,
+		"type": "Mace",
+		"slot": "twohand",
+		"name": "The Jackhammer",
+		"speed": 2.5,
+		"mindmg": 79,
+		"maxdmg": 119,
+		"proc": {
+			"spell": "Jackhammer"
+		}
+	},
+	"10652": {
+		"id": 10652,
+		"type": "Axe",
+		"slot": "twohand",
+		"name": "Will of the Mountain Giant",
+		"speed": 2.8,
+		"mindmg": 88,
+		"maxdmg": 133,
+		"str": 15,
+		"sta": 14
+	},
+	"213289": {
+		"id": 213289,
+		"type": "Staff",
+		"slot": "twohand",
+		"name": "Hydrostaff",
+		"speed": 2.8,
+		"mindmg": 78,
+		"maxdmg": 117,
+		"resist": {
+			"frost": 23
+		}
+	},
+	"213292": {
+		"id": 213292,
+		"type": "Sword",
+		"slot": "twohand",
+		"name": "Gizmotron Gigachopper",
+		"speed": 3.2,
+		"mindmg": 102,
+		"maxdmg": 153,
+		"agi": 9,
+		"str": 22
+	},
+	"213296": {
+		"id": 213296,
+		"type": "Axe",
+		"slot": "twohand",
+		"name": "Supercharged Headchopper",
+		"speed": 2.8,
+		"mindmg": 89,
+		"maxdmg": 133,
+		"str": 13,
+		"int": 12,
+		"proc": {
+			"magic": true,
+			"procgcd": true,
+			"dmg": 90
+		}
+	},
+	"213353": {
+		"id": 213353,
+		"type": "Staff",
+		"slot": "twohand",
+		"name": "Defibrillating Staff",
+		"speed": 3.3,
+		"mindmg": 102,
+		"maxdmg": 160,
+		"sta": 11
+	},
+	"213354": {
+		"id": 213354,
+		"type": "Staff",
+		"slot": "twohand",
+		"name": "Staff of the Evil Genius",
+		"speed": 3.3,
+		"mindmg": 80,
+		"maxdmg": 121,
+		"sta": 4,
+		"hit": 1
+	},
+	"213408": {
+		"id": 213408,
+		"type": "Polearm",
+		"slot": "twohand",
+		"name": "Gyromatic Macro-Adjustor",
+		"speed": 3.2,
+		"mindmg": 101,
+		"maxdmg": 152,
+		"agi": 15,
+		"sta": 9,
+		"int": 15
+	},
+	"213416": {
+		"id": 213416,
+		"type": "Axe",
+		"slot": "twohand",
+		"name": "Thermaplugg's Rocket Cleaver",
+		"speed": 3.3,
+		"mindmg": 117,
+		"maxdmg": 175,
+		"str": 29,
+		"sta": 12
+	},
+	"216495": {
+		"id": 216495,
+		"type": "Mace",
+		"slot": "twohand",
+		"name": "Sanguine Crusher",
+		"speed": 3.6,
+		"mindmg": 116,
+		"maxdmg": 175,
+		"str": 18,
+		"sta": 12,
+		"crit": 1
+	},
+	"210741": {
+		"id": 210741,
+		"type": "Mace",
+		"slot": "twohand",
+		"name": "Automatic Crowd Pummeler",
+		"speed": 2,
+		"mindmg": 53,
+		"maxdmg": 85,
+		"agi": 8,
+		"str": 22,
+		"proc": {
+			"stat": "haste",
+			"amount": 50,
+			"duration": 30,
+			"cd": 180
+		}
+	},
+	"216504": {
+		"id": 216504,
+		"type": "Sword",
+		"slot": "onehand",
+		"name": "Eclipsed Bloodlight Saber",
+		"speed": 2.2,
+		"mindmg": 48,
+		"maxdmg": 89,
+		"int": 4,
+		"sta": 4,
+		"sp": 14
+	},
+	"216504": {
+		"id": 216504,
+		"type": "Sword",
+		"slot": "twohand",
+		"name": "Bloodlight Avenger's Edge",
+		"speed": 3.6,
+		"mindmg": 116,
+		"maxdmg": 175,
+		"str": 14,
+		"sta": 144
+	},
+}

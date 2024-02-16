@@ -145,7 +145,7 @@ public class TalentHandler
                     break;
                 case 7:
                     abilities["judge"] = new Ability(10,(stats)=>Ability.GetRandomDouble(60,64)+0.429*stats["sp"],3,"physical","Judgment of Command",65+0.06*baseMana,dmgType:"holy");
-                    procs["seal"] = new Ability(0,(stats)=>0.7*stats["dmg"]+0.2*stats["sp"],19999,"physical","Seal of Command",0,procChance:100*(7*cStats["speed"])/60,dmgType:"holy");
+                    procs["seal"] = new Ability(1.5,(stats)=>0.7*((stats["mindmg"] + stats["maxdmg"])/2+(stats["ap"]/14)*stats["baseSpeed"])+0.2*stats["sp"],19999,"physical","Seal of Command",0,procChance:100*(7*cStats["speed"])/60,dmgType:"holy");
                     break;
                 case 11:
                     dmgChanges["aa"] = (dmgChanges["aa"].Item1, dmgChanges["aa"].Item2 + 0.02 * retTalents[11]);
@@ -158,8 +158,7 @@ public class TalentHandler
                     dmgChanges["holy"] = (dmgChanges["holy"].Item1,
                         dmgChanges["holy"].Item2 + 0.03 * retTalents[13]);
                     dmgChanges["aa"] = (dmgChanges["aa"].Item1, dmgChanges["aa"].Item2 + 0.03 * retTalents[13]);
-                    dmgChanges["physical"] = (dmgChanges["physical"].Item1,
-                        dmgChanges["physical"].Item2 + 0.03 * retTalents[13]);
+                    dmgChanges["physical"] = (dmgChanges["physical"].Item1, dmgChanges["physical"].Item2 + 0.03 * retTalents[13]);
                     break;
             }
             
@@ -191,16 +190,16 @@ public class TalentHandler
         }
         if (chest == "p2")
         {
-            abilities.Add("ds", new Ability(10,(stats)=>1.1*stats["dmg"],0,"physical","Divine Storm",0.12*baseMana));
+            abilities.Add("ds", new Ability(10,(stats)=>1.1*( (stats["mindmg"] + stats["maxdmg"])/2+(stats["ap"]/14)*stats["baseSpeed"]),0,"physical","Divine Storm",0.12*baseMana));
         }
         else if (chest == "p3")
         {
-            procs["seal"] = new Ability(0,(stats)=>0.4*stats["dmg"],1000,"physical","Seal of Blood",0,dmgType:"holy");
+            procs["seal"] = new Ability(0,(stats)=>0.4*( (stats["mindmg"] + stats["maxdmg"])/2+(stats["ap"]/14)*3.3),1000,"physical","Seal of Blood",0,dmgType:"holy");
             abilities["judge"] = new Ability(10,(stats)=>0.7*stats["dmg"],3,"physical","Judgement of Blood",0.05*baseMana,dmgType:"holy");
         }
         if (hand == "x")
         {
-            abilities.Add("cs", new Ability(6,(stats)=>0.75*stats["dmg"],1,"physical","Crusader Strike",-0.05*baseMana));
+            abilities.Add("cs", new Ability(6,(stats)=>0.75*( (stats["mindmg"] + stats["maxdmg"])/2+(stats["ap"]/14)*3.3),1,"physical","Crusader Strike",-0.05*baseMana));
         }
         if (legs == "sn")
         {
@@ -261,7 +260,7 @@ public class TalentHandler
             // crits with holy shock -100% cd on shock exo refund holy shock mana
         }
         procs.Add("wf",
-            new Ability(0, (stats) => ((stats["dmg"]/stats["speed"]-stats["ap"]/ 14) + (1.2 * stats["ap"]) / 14 )* stats["speed"],199999,"aa","Windfury",0,procChance:20,procNames:["seal"])); // think this should be deep copy idk if this works with ap procs
+            new Ability(0, (stats) => ( (stats["mindmg"] + stats["maxdmg"])/2+1.2*(stats["ap"]/14)*stats["baseSpeed"]),199999,"aa","Windfury",0,procChance:20,procNames:["seal"])); // think this should be deep copy idk if this works with ap procs
         abilities.Add("melee",
             new Ability(cStats["speed"]/cStats["haste"], (stats) => stats["dmg"], -100, "aa", "Melee",0, procNames: ["wf","seal"]));
         if (feet == "sk")
