@@ -268,11 +268,37 @@ public class TalentHandler
             cStats["%manaPer3"] += 0.05;
         }else if (feet == "sp")
         {
-            try
+            List<string> abilitesToReset = [];
+            if (abilities.ContainsKey("holyShock"))
             {
-                abilities["melee"].OnCritProc = (["holyShock", "exo"], 0);
+                abilitesToReset.Add("holyShock");
+            }
+            if (abilities.ContainsKey("exo"))
+            {
+                abilitesToReset.Add("exo");
+            }
+
+            if (abilitesToReset.Count != 0)
+            {
+                double manaReset = 0;
+                foreach (var entry in abilitesToReset)
+                {
+                    manaReset +=0.8*abilities[entry].ManaCost;
+                }
+                abilities["melee"].OnCritProc = (abilitesToReset, manaReset);
+                abilities["judge"].OnCritProc = (abilitesToReset, manaReset);
+                if (abilities.ContainsKey("ds"))
+                {
+                    abilities["ds"].OnCritProc = (abilitesToReset, manaReset);
+                }
+
+                if (abilities.ContainsKey("cs"))
+                {
+                    abilities["cs"].OnCritProc = (abilitesToReset, manaReset);
+                }
+            }
                 //aa crits => shock + exo -100% cd
-            }catch{}
+
         }
         var tempDict = cStats.DeepClone();
         foreach (var VARIABLE in tempDict)

@@ -1,5 +1,6 @@
 # Added
-correctly normalised som\
+updated art of war to properly refund mana\
+correctly normalised som
 
 # Current Issues:
 assumes you have all buffs + enchants\
