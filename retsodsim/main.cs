@@ -417,15 +417,16 @@ namespace retsodsim
                 Console.WriteLine("Input race");
                 string race = Console.ReadLine().ToLower();
                 Console.WriteLine("Enter number for boss:\n(1)Grubbis & Viscous Fallout\n(2)Crowd Pummeler 9-60 & Mekgineer Thermaplugg\n(3)Electrocutioner 6000 & Mechanical Menagerie");
-                if (Console.ReadLine()== "1")
+                var choice = Console.ReadLine()
+                if (choice== "1")
                 {
                     Ability.Armour = 1-0.032;
                 }
-                else if (Console.ReadLine() == "2")
+                else if (choice == "2")
                 {
                     Ability.Armour = 1-0.38;
                 }
-                else if (Console.ReadLine() == "3")
+                else if (choice == "3")
                 {
                     Ability.Armour = 1-0.297;
                 }
