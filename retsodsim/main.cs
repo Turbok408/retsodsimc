@@ -101,54 +101,6 @@ namespace retsodsim
             onUse.Add("5",new OnHitUseStat(10, 600,"haste",10));
             foreach (var entry in testSet)
             {
-                if (allIds[entry].ContainsKey("proc"))
-                {
-                    Dictionary<string, string> proc = JsonConvert.DeserializeObject<Dictionary<string, string>>(allIds[entry]["proc"].ToString());
-                    if (allIds[entry]["proc"].stat != null)
-                    {
-                        onUse.Add(allIds[entry]["name"], new OnHitUseStat(Convert.ToDouble(proc["duration"]),Convert.ToDouble(proc["cd"]),proc["stat"],Convert.ToDouble(proc["amount"])));
-                    }
-                    else
-                    {
-                        double dmg = 0;
-                        double cd = 0;
-                        double Chance = 10; // this assumes 10% proc chance unless otherwise stated.
-                        string school = "spell";
-                        if (allIds[entry]["proc"].tick != null)
-                        {
-                            double amountOfTicks =
-                                Convert.ToDouble(proc["duration"]) / Convert.ToDouble(proc["interval"]);
-                            dmg += Convert.ToDouble(proc["tick"]) * amountOfTicks;
-                        }
-                        if (allIds[entry]["proc"].dmg != null)
-                        {
-                            dmg += Convert.ToDouble(proc["dmg"]);
-                        }
-                        if (allIds[entry]["proc"].ppm != null)
-                        {
-                            Chance = 100 * (Convert.ToDouble(proc["ppm"]) * stats["speed"]) / 60; // this wont work 
-                        }
-                        if (allIds[entry]["proc"].chance != null)
-                        {
-                            Chance = Convert.ToDouble(proc["chance"]);
-                        }
-                        if (allIds[entry]["proc"].bleed != null)
-                        {
-                            school = "physical";
-                        }
-                        if (allIds[entry]["proc"].cd != null)
-                        {
-                            cd = Convert.ToDouble(allIds[entry]["proc"].cd);
-                        }
-                        if(allIds[entry]["slot"] == "trinket")
-                        {
-                            Chance = 100;
-                        }
-                        dmgProcs.Add(allIds[entry]["name"],
-                            new Ability(cd/10, new Func<Dictionary<string, double>, double>((stats) => dmg), 1000, school,
-                                allIds[entry]["name"], 0,procChance : Chance));
-                    }
-                }
                 foreach (var statType in (stats.Keys))
                 {
                     try
@@ -195,7 +147,7 @@ namespace retsodsim
             stats["int"] *= 1.1;
             stats["crit"] += stats["agi"] / 20 ;// only works as no talents can change agi
             var statAbilitys = TalentHandler.return_ability_stats(stats, talents);
-            foreach (var entry in sets) // if theses every change base stats int or str needs some chaning
+            foreach (var entry in sets) // if theses every change base stats, int or str needs some changing
             {
                 switch (entry.Key)
                 {
@@ -274,6 +226,79 @@ namespace retsodsim
             foreach (var entry in statAbilitys.Item3)
             {
                 dmgProcs.Add(entry.Key,entry.Value);
+            }
+            foreach (var entry in testSet)
+            {
+                if (allIds[entry].ContainsKey("proc"))
+                {
+                    Dictionary<string, string> proc = JsonConvert.DeserializeObject<Dictionary<string, string>>(allIds[entry]["proc"].ToString());
+                    if (allIds[entry]["proc"].stat != null)
+                    {
+                        onUse.Add(allIds[entry]["name"], new OnHitUseStat(Convert.ToDouble(proc["duration"]),Convert.ToDouble(proc["cd"]),proc["stat"],Convert.ToDouble(proc["amount"])));
+                    }
+                    else
+                    {
+                        double dmg = 0;
+                        double cd = 0;
+                        double Chance = 10; // this assumes 10% proc chance unless otherwise stated.
+                        string school = "spell";
+                        if (allIds[entry]["proc"].tick != null)
+                        {
+                            double amountOfTicks =
+                                Convert.ToDouble(proc["duration"]) / Convert.ToDouble(proc["interval"]);
+                            dmg += Convert.ToDouble(proc["tick"]) * amountOfTicks;
+                        }
+
+                        if (allIds[entry]["proc"].ppm != null)
+                        {
+                            Chance = 100 * (Convert.ToDouble(proc["ppm"]) * stats["speed"]) / 60; // this wont work 
+                        }
+
+                        if (allIds[entry]["proc"].chance != null)
+                        {
+                            Chance = Convert.ToDouble(proc["chance"]);
+                        }
+
+                        if (allIds[entry]["proc"].bleed != null)
+                        {
+                            school = "physical";
+                        }
+
+                        if (allIds[entry]["proc"].cd != null)
+                        {
+                            cd = Convert.ToDouble(allIds[entry]["proc"].cd);
+                        }
+
+                        if (allIds[entry]["slot"] == "trinket")
+                        {
+                            Chance = 100;
+                        }
+
+                        if (allIds[entry]["proc"].dmg != null)
+                        {
+                            dmg += Convert.ToDouble(proc["dmg"]);
+                        }
+
+                        if ((allIds[entry]["slot"] == "twohand" || allIds[entry]["slot"] == "onehand") &&
+                            dmgProcs["seal"].Name == "Seal of Blood" && allIds[entry]["proc"].dmg != null)
+                        {
+                            dmgProcs.Add(allIds[entry]["name"],
+                                new Ability(cd / 10, new Func<Dictionary<string, double>, double>((stats) => dmg), 1000,
+                                    school,
+                                    allIds[entry]["name"], 0, procChance: Chance));
+                            dmgProcs[allIds[entry]["name"]].Procs = new Dictionary<string,Ability>{{"seal Weaopon proc",dmgProcs["seal"].DeepClone()}}; //this makes som proc 100% time on weopon procs should be 50%
+                            dmgProcs[allIds[entry]["name"]].Procs["seal Weaopon proc"]._procChance = 50;
+                            //dmgProcs.Add("Seal on Weopon Proc",dmgProcs[allIds[entry]["name"]].Procs["seal Weaopon proc"]);
+                        }
+                        else
+                        {
+                            dmgProcs.Add(allIds[entry]["name"],
+                                new Ability(cd / 10, new Func<Dictionary<string, double>, double>((stats) => dmg), 1000,
+                                    school,
+                                    allIds[entry]["name"], 0, procChance: Chance));
+                        }
+                    }
+                }
             }
             // apply % buffs after talents? idk if this is correct
             stats["stg"] *= 1.1; //lion buff
@@ -391,10 +416,22 @@ namespace retsodsim
                 string talents = Console.ReadLine();
                 Console.WriteLine("Input race");
                 string race = Console.ReadLine().ToLower();
-                Console.WriteLine("Sim Thermaplugg (y/n)");
-                if (Console.ReadLine().ToLower() == "y")
+                Console.WriteLine("Enter number for boss:\n(1)Grubbis & Viscous Fallout\n(2)Crowd Pummeler 9-60 & Mekgineer Thermaplugg\n(3)Electrocutioner 6000 & Mechanical Menagerie");
+                if (Console.ReadLine()== "1")
                 {
-                    Ability.Armour = 1-0.426;
+                    Ability.Armour = 1-0.032;
+                }
+                else if (Console.ReadLine() == "2")
+                {
+                    Ability.Armour = 1-0.38;
+                }
+                else if (Console.ReadLine() == "3")
+                {
+                    Ability.Armour = 1-0.297;
+                }
+                else
+                {
+                    Console.WriteLine("Didn't choose a number between 1 and 3\nPress enter to close");
                 }
                 var statAbilites = GetStats(talents,race);
                 Console.WriteLine("press 1 for sim, 2 for stat weights (this will do iterations*11 iterations),3 for bis gear sim");

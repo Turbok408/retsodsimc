@@ -14,7 +14,7 @@
         public double AbilityDmgTotal { get; set; }
         public double _attacks;
         public double _currentCd;
-        private double _procChance;
+        public double _procChance { get; set; }
         private Func<Dictionary<string, double>, double> _dmgFunc;
         private static readonly Random GetRandom = new Random();
         private List<string>? _procNames {get; set; }
@@ -65,7 +65,7 @@
                 if (hitRatio > 0 && Procs != null) // this assumes soc and wf cant proc of dodges?
                 {
                     foreach (var entry in Procs)
-                    {   
+                    {
                         entry.Value.do_dmg(stats);
                     }
                 }

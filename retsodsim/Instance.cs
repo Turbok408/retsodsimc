@@ -47,6 +47,7 @@ public class Instance
         {
             onHitUseStats.Add("sobMana",new OnHitUseStat(1,stats["speed"],"mana",(1+stats["crit"]/100)*0.3*0.4*stats["dmg"])); // good enough
         }
+        procs["wf"].Procs = new Dictionary<string,Ability> {{"seal",procs["seal"]}};
     }
     public Dictionary<string,List<double>> Output()
     { 
@@ -57,7 +58,19 @@ public class Instance
         }
         foreach (var entry in Procs)
         {
-            dmg.Add(entry.Value.Name,[(long)entry.Value._attacks,(long)entry.Value.AbilityDmgTotal]);
+            if (dmg.ContainsKey(entry.Value.Name).ToString()=="5")
+            {
+                Console.WriteLine(entry.Value.Name);
+                for (int i=0;i<dmg[entry.Value.Name].Count;i++)
+                {
+                    dmg[entry.Value.Name][i] += (long)entry.Value._attacks;
+                }
+            }
+            else
+            {
+                dmg.Add(entry.Value.Name,[(long)entry.Value._attacks,(long)entry.Value.AbilityDmgTotal]);
+            }
+            
         }
         return dmg;
     }

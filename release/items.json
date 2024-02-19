@@ -32783,7 +32783,8 @@
 		"proc": {
 			"magic": true,
 			"procgcd": true,
-			"dmg": 200
+			"dmg": 200,
+			"chance":10
 		}
 	},
 	"1986": {
