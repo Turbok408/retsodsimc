@@ -1,6 +1,6 @@
 # Added
 fixed bug with wf not proccing seal properly\
-som can now proc off weopon procs
+som can now proc off weapon procs
 updated art of war to properly refund mana\
 correctly normalised som
 
